@@ -1,0 +1,209 @@
+:root {
+  --black-color: #292929;
+  --dark-grey-color: #474747;
+  --sapphire-color: #145f7f;
+  --blue-color: #008dd0;
+  --red-color: #e6341d;
+  --orange-color: #f59e1c;
+  --green-color: #71aa5e;
+  --grey-color: #8da3a8;
+  --silver-color: #c1cdcf;
+  --white-color: #f4f6f6;
+
+  --blue-light: #55D8E8;
+  --purple-light: #AF55E8;
+  --terracota: #E86555;
+  --green-light: #8FE855;
+
+  --green-dark: #467055;
+  --green-dark-ii: #598F6D;
+  --blue-dark: #2E76AE;
+  --pink-dark: #9D6287;
+  --purple-dark: #62699D;
+  --purple-light: #99A3FF;
+
+  --blue-analog: #C3E7FF;
+  --blue-analog-ii: #6cc4ff9c;
+}
+
+.sidebar {
+  background-color: var(--blue-analog) !important;
+  min-width: 250px;
+  max-width: 250px;
+  min-height: calc(100vh - 56px);
+  transition: all 0.2s;
+  
+}
+
+.sidebar a {
+  color: var(--black-color) !important;
+  transition: 0.1s;
+  
+}
+
+
+.sidebar a:hover {
+  color: var(--dark-grey-color) !important;
+}
+
+a .bx-menu {
+  font-size: 80px !important;
+}
+
+.nav-item a {
+  display: flex;
+  text-align: center;
+  padding: 16px;
+}
+
+a i {
+  font-size: 24px;
+  margin-right: 16px;
+}
+
+a .nav-item {
+  display: flex;
+  text-align: center;
+}
+
+#nav {
+  background-color: var(--sapphire-color) !important;
+  color: var(--white-color) !important;
+  box-shadow: 2px 2px 3px black;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#login {
+  margin: auto;
+  width: 30%;
+}
+#imagem {
+  text-align: center;
+  
+}
+#form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.inputplaca input {
+  text-align: center !important;
+}
+
+.form-veiculo {
+  width: 60vw !important;
+}
+
+input[type="submit"] {
+  font-size: 1.25rem !important;
+  color: var(--white-color) !important;
+  text-transform: uppercase;
+}
+
+.ModaddConta {
+  /* Estilização da modal */
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 4px 5px 8px black;
+  width: 50%;
+  height: 80%;
+  padding: 20px;
+  background-color: var(--blue-analog);
+  display: inline-block;
+  color: black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+
+  animation: animate;
+  animation-duration: 500ms;
+}
+
+@keyframes animate {
+  from{opacity: 1;}
+  from{opacity: 0;}
+}
+
+.ModlistaConta {
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 4px 5px 8px black;
+  width: 70%;
+  height: 80%;
+  padding: 20px;
+  background-color: var(--blue-analog);
+  display: inline-block;
+  color: black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+
+  animation: animate;
+  animation-duration: 500ms;
+}
+
+.ModaddCategoria {
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 4px 5px 8px black;
+  width: 50%;
+  height: 80%;
+  padding: 20px;
+  background-color: var(--blue-analog);
+  display: inline-block;
+  color: black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+
+  animation: animate;
+  animation-duration: 500ms;
+}
+
+@keyframes animate {
+  from{opacity: 1;}
+  from{opacity: 0;}
+}
+
+.fecharAddConta {
+  /* Estilização do botão fechar modal */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  cursor: pointer;
+}
+
+.fecharListaContas {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  cursor: pointer;
+}
+
+.fecharAddCategoria {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  cursor: pointer;
+}
+
+.formulario {
+  margin-top: 60px;
+}
+.conteudo {
+  background-color: lightblue;
+  width: 100%;
+  padding: 50px;
+}
+
+.tablelista {
+  width: 50%;
+  
+}
