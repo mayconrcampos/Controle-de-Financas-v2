@@ -55,8 +55,14 @@
                 </li>
 
 
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#" onclick="addCategoria()"><i class='bx bxs-car' ></i>Categorias</a>
+                <li class="nav-item dropdown list-unstyled">
+                  <a class="nav-link dropdown-toggle align-items-center" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class='bx bxs-category'></i>Categorias</a>
+
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" onclick="addCategoria()"  href='#'><i class='bx bxs-comment-add'></i> Adicionar</a>
+                    <a class="dropdown-item"  href="#"><i class='bx bx-list-ul' ></i> Listar</a>
+                  </div>
                 </li>
 
                 <li class="nav-item">
@@ -201,7 +207,7 @@
 
   
     <!-------- Modal Adiciona Categoria ------------->
-    <div id="#ModaddCategoria" class="ModaddCategoria">
+    <div class="ModaddCategoria">
           <div onclick="fecharAddCategoria()" class="fecharAddCategoria">x</div>
           <h1>Adicionar Categoria</h1>
           <div class="formulario border border-dark rounded">
@@ -211,12 +217,12 @@
                   <fieldset>
 
                     <div class="d-inline alert alert-primary rounded" role="alert">
-                      <input type="radio" name="filtro" value="1" class="form-check-input" >
+                      <input type="radio" name="filtro" id="filtro" value="1" class="form-check-input" checked>
                       <label for="receitas" class="form-check-label">Receita</label>
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="filtro" value="0" class="form-check-input" checked>
+                      <input type="radio" name="filtro" id="filtro" value="0" class="form-check-input" >
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
@@ -224,10 +230,10 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Descrição</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="descricao" required autofocus>
+                        <input type="text" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" required autofocus>
                     </div><br>
 
-                    <input type="submit" value="Cadastrar" onclick="listaConta()" class="btn btn-primary btn-lg btn-block">
+                    <input id="inputcategoria" type="submit" value="Cadastrar" class="btn btn-primary btn-lg btn-block">
 
                   </fieldset>
                 </div>

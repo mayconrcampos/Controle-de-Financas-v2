@@ -1,7 +1,7 @@
 function addConta(){
-    let modal = document.querySelector(".ModaddConta")
+    let modaladdConta = document.querySelector(".ModaddConta")
 
-    modal.style.display = "block";
+    modaladdConta.style.display = "block";
     recolheSidebar()
 }
 
@@ -20,9 +20,9 @@ function addCategoria(){
 }
 
 function fecharAddConta(){
-    let modal = document.querySelector(".ModaddConta")
+    let modalFecha = document.querySelector(".ModaddConta")
 
-    modal.style.display = "none";
+    modalFecha.style.display = "none";
     abreSidebar()
 }
 
@@ -49,4 +49,7 @@ function abreSidebar(){
     var sidebar1 = document.getElementById("sidebar1");
     sidebar1.style.marginLeft = "0px";
 }
+
+
+
 
