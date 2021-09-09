@@ -227,7 +227,6 @@
                         <input type="text" aria-label="First name" class="form-control form-control-lg" name="descricao" required autofocus>
                     </div><br>
 
-                    
                     <input type="submit" value="Cadastrar" onclick="listaConta()" class="btn btn-primary btn-lg btn-block">
 
                   </fieldset>
