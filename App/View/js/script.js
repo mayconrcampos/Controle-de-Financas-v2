@@ -13,9 +13,9 @@ function listaConta(){
 }
 
 function addCategoria(){
-    let modalListaConta = document.querySelector(".ModaddCategoria")
+    let modalAddCateg = document.querySelector(".ModaddCategoria")
 
-    modalListaConta.style.display = "block";
+    modalAddCateg.style.display = "block";
     recolheSidebar()  
 }
 

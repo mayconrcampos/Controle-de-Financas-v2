@@ -157,7 +157,7 @@
 
 
     <!----------- Modal Table Lista Conta ---------------->
-    <div class="ModlistaConta">
+    <div id="ModlistaConta" class="ModlistaConta">
         <div onclick="fecharListaContas()" class="fecharListaContas">x</div>
         <h1>Movimentação Financeira</h1>
 
