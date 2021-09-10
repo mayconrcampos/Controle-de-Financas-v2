@@ -19,8 +19,22 @@ function addCategoria(){
     recolheSidebar()  
 }
 
-function fechamodal(){
-    let modalFecha = document.querySelector(".modal")
+function listaCategorias(){
+    let modalListaCateg = document.querySelector(".modlistaCategorias")
+
+    modalListaCateg.style.display = "block";
+    recolheSidebar()
+}
+
+function listaCategorias1(){
+    let modalListaCateg = document.querySelector(".modlistaCategorias1")
+
+    modalListaCateg.style.display = "block";
+    recolheSidebar()
+}
+
+function fechalistaCategorias(){
+    let modalFecha = document.querySelector(".modlistaCategorias")
     modalFecha.style.display = "none";
     abreSidebar()
 }

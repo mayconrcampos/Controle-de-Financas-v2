@@ -1,5 +1,5 @@
 <?php
-  include_once("./App/Controller/teste.php");
+  include_once("./App/Controller/Funcoes.php");
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
 
                   <div class="dropdown-menu">
                     <a class="dropdown-item" onclick="addCategoria()"  href='#'><i class='bx bxs-comment-add'></i> Adicionar</a>
-                    <a class="dropdown-item"  href="#"><i class='bx bx-list-ul' ></i> Listar</a>
+                    <a class="dropdown-item"  href="#" onclick="listaCategorias()"><i class='bx bx-list-ul' ></i> Listar</a>
                   </div>
                 </li>
 
@@ -230,10 +230,10 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text">Descrição</span>
                         </div>
-                        <input type="text" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" required autofocus>
+                        <input type="text" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
                     </div><br>
 
-                    <input id="inputcategoria" type="submit" value="Cadastrar" class="btn btn-primary btn-lg btn-block">
+                    <button id="inputcategoria" type="submit" name="Cadastrar" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
 
                   </fieldset>
                 </div>
@@ -243,14 +243,40 @@
           
     </div>
 
-    <?php filtrando($_POST['filtro'], $_POST['descricao']);
+    <?php Funcoes::submitCategorias($_POST['filtro'], $_POST['descricao'], $_POST['Cadastrar']);
           unset($_POST['filtro']);
           unset($_POST['descricao']);
      ?>
 
 
 
-  <!-------------------- Ultimo modal que vai ser a lista de Categorias, depois dele o relatório não será modal, mas o conteúdo irá carregar na própria página pra poder aplicar os filtros --------------------------->
+  <!----------- Modal Table Lista de Categorias ---------------->
+  <div id="modlistaCategorias1" class="modlistaCategorias1">
+        <div onclick="fechalistaCategorias1()" class="fechalistaCategorias1">x</div>
+        <h1>Lista de Categorias</h1>
+
+
+        <div class="tableLista">
+              <table class="table table-lg table-responsive-xl table-hover border border-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Descrição (R$)</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <!----- Aqui vai o laço foreach ------>
+                  <tr>
+                    <th scope="row">Super Santos</th>
+                    <td>50,00</td>
+                  </tr>
+                <!------- Aqui termina o laço foreach --------->
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
 
 
   <!------------- Limite do conteúdo ------------------>    

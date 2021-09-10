@@ -113,6 +113,26 @@ input[type="submit"] {
   animation-duration: 500ms;
 }
 
+
+.modlistaCategorias1 {
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 4px 5px 8px black;
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  background-color: var(--blue-analog);
+  display: inline-block;
+  color: black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  overflow: hidden;
+  animation: animate;
+  animation-duration: 500ms;
+}
+
 @keyframes animate {
   from{opacity: 1;}
   from{opacity: 0;}
@@ -180,6 +200,22 @@ input[type="submit"] {
 }
 
 .fecharAddCategoria {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  cursor: pointer;
+}
+
+.fechalistaCategorias {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  cursor: pointer;
+}
+
+.fechalistaCategorias1 {
   width: 30px;
   height: 30px;
   border-radius: 50%;
