@@ -245,7 +245,7 @@
 
 
 
-  <!-------------------- Próximo Modal --------------------------->
+  <!-------------------- Ultimo modal que vai ser a lista de Categorias, depois dele o relatório não será modal, mas o conteúdo irá carregar na própria página pra poder aplicar os filtros --------------------------->
 
 
   <!------------- Limite do conteúdo ------------------>    
