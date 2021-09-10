@@ -87,14 +87,6 @@ a .nav-item {
   width: 50%;
 }
 
-.inputplaca input {
-  text-align: center !important;
-}
-
-.form-veiculo {
-  width: 60vw !important;
-}
-
 input[type="submit"] {
   font-size: 1.25rem !important;
   color: var(--white-color) !important;
@@ -129,7 +121,7 @@ input[type="submit"] {
 .ModlistaConta {
   border-radius: 3px 3px 3px 3px;
   box-shadow: 1px 4px 5px 8px black;
-  width: 70%;
+  width: 80%;
   height: 80%;
   padding: 20px;
   background-color: var(--blue-analog);
@@ -140,6 +132,7 @@ input[type="submit"] {
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
+  overflow: hidden;
 
   animation: animate;
   animation-duration: 500ms;

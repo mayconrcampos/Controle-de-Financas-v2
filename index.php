@@ -243,28 +243,6 @@
           
     </div>
 
-    <!------------ Modal relatórios ----------------->
-    <!------<div class="ModRelatorios">
-      <div onclick="fecharRelatorios()" class="fecharRelatorios">x</div>
-          <h1>Relatórios</h1>
-          <div class="formulario border border-dark rounded">
-            <form class="m-2" method="POST" action="">
-              <div class="form-row">
-                <div class="col">
-                  <input type="text" class="form-control" name="filtrar" placeholder="Digite a palavra chave" autofocus>
-                </div>
-                <div class="col">
-                  <input type="date" class="form-control" placeholder="Last name">
-                </div>
-                <div class="col">
-                  <input type="date" class="form-control" placeholder="Last name">
-                </div>
-                <button name='btnFiltro'  type="submit" class="btn btn-primary">Filtrar</button>
-              </div>
-            </form>
-          </div>
-      </div>
-    </div> ----->
 
 
   <!-------------------- Próximo Modal --------------------------->
