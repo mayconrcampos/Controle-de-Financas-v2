@@ -142,13 +142,13 @@ input[type="submit"] {
   border-radius: 3px 3px 3px 3px;
   box-shadow: 1px 4px 5px 8px black;
   width: 50%;
-  height: 80%;
+  height: 50%;
   padding: 20px;
   background-color: var(--blue-analog);
   display: inline-block;
   color: black;
   position: absolute;
-  top: 55%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;

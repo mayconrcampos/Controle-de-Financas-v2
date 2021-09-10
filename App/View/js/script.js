@@ -19,6 +19,12 @@ function addCategoria(){
     recolheSidebar()  
 }
 
+function fechamodal(){
+    let modalFecha = document.querySelector(".modal")
+    modalFecha.style.display = "none";
+    abreSidebar()
+}
+
 function fecharAddConta(){
     let modalFecha = document.querySelector(".ModaddConta")
 

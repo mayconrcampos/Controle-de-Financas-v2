@@ -1,5 +1,5 @@
 <?php
-//
+  include_once("./App/Controller/teste.php");
 ?>
 
 <!DOCTYPE html>
@@ -222,7 +222,7 @@
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="filtro" id="filtro" value="0" class="form-check-input" >
+                      <input type="radio" name="filtro" id="filtro" value="2" class="form-check-input" >
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
@@ -242,6 +242,11 @@
           </div>
           
     </div>
+
+    <?php filtrando($_POST['filtro'], $_POST['descricao']);
+          unset($_POST['filtro']);
+          unset($_POST['descricao']);
+     ?>
 
 
 
