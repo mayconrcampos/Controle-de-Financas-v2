@@ -61,12 +61,12 @@
 
                   <div class="dropdown-menu">
                     <a class="dropdown-item" onclick="addCategoria()"  href='#'><i class='bx bxs-comment-add'></i> Adicionar</a>
-                    <a class="dropdown-item"  href="#" onclick="listaCategorias()"><i class='bx bx-list-ul' ></i> Listar</a>
+                    <a class="dropdown-item"  href="#" onclick="listaCategorias1()"><i class='bx bx-list-ul' ></i> Listar</a>
                   </div>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link text-dark" href="#"><i class='bx bxs-file-find'></i> Relatórios</a>
+                <a class="nav-link text-dark" href="#" onclick="modRelatorios()"><i class='bx bxs-file-find'></i> Relatórios</a>
                 </li>
             </ul>
         </nav>
@@ -270,6 +270,44 @@
                   <tr>
                     <th scope="row">Super Santos</th>
                     <td>50,00</td>
+                  </tr>
+                <!------- Aqui termina o laço foreach --------->
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+
+    <!----------- Modal Relatórios ---------------->
+  <div id="modRelatorios" class="modRelatorios">
+        <div onclick="fechaRelatorios()" class="fechaRelatorios">x</div>
+        <h1>Relatórios</h1>
+
+
+        <div class="tableLista">
+              <table class="table table-lg table-responsive-xl table-hover border border-dark">
+                <thead>
+                    <tr>
+                      <th scope="col">Descrição</th>
+                      <th scope="col">Valor (R$)</th>
+                      <th scope="col">Data</th>
+                      <th scope="col">Categoria</th>
+                      <th scope="col">Comentário</th>
+                      <th scope="col">Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <!----- Aqui vai o laço foreach ------>
+                  <tr>
+                    <th scope="row">Super Santos</th>
+                    <td>50,00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 <!------- Aqui termina o laço foreach --------->
                   

@@ -93,6 +93,9 @@ input[type="submit"] {
   text-transform: uppercase;
 }
 
+
+/* Modais */
+
 .ModaddConta {
   /* Estilização da modal */
   border-radius: 3px 3px 3px 3px;
@@ -133,10 +136,6 @@ input[type="submit"] {
   animation-duration: 500ms;
 }
 
-@keyframes animate {
-  from{opacity: 1;}
-  from{opacity: 0;}
-}
 
 .ModlistaConta {
   border-radius: 3px 3px 3px 3px;
@@ -177,10 +176,30 @@ input[type="submit"] {
   animation-duration: 500ms;
 }
 
+
+.modRelatorios {
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 4px 5px 8px black;
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  background-color: var(--blue-analog);
+  display: inline-block;
+  color: black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
 @keyframes animate {
   from{opacity: 1;}
   from{opacity: 0;}
 }
+
+
+/*   Botões de fechamento de modal    */
 
 .fecharAddConta {
   /* Estilização do botão fechar modal */
@@ -216,6 +235,14 @@ input[type="submit"] {
 }
 
 .fechalistaCategorias1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  cursor: pointer;
+}
+
+.fechaRelatorios {
   width: 30px;
   height: 30px;
   border-radius: 50%;

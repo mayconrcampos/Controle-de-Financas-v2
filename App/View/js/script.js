@@ -1,3 +1,9 @@
+/**
+ * Funções para abrir modal
+ */
+
+
+
 function addConta(){
     let modaladdConta = document.querySelector(".ModaddConta")
 
@@ -26,6 +32,14 @@ function listaCategorias(){
     recolheSidebar()
 }
 
+/* Modal Relatorios */ 
+function modRelatorios(){
+    let modal = document.querySelector(".modRelatorios")
+
+    modal.style.display = "block";
+    recolheSidebar()
+}
+
 function listaCategorias1(){
     let modalListaCateg = document.querySelector(".modlistaCategorias1")
 
@@ -33,8 +47,20 @@ function listaCategorias1(){
     recolheSidebar()
 }
 
+
+
+
+/* Funções para fechar modal */
+
+
 function fechalistaCategorias(){
     let modalFecha = document.querySelector(".modlistaCategorias")
+    modalFecha.style.display = "none";
+    abreSidebar()
+}
+
+function fechalistaCategorias1(){
+    let modalFecha = document.querySelector(".modlistaCategorias1")
     modalFecha.style.display = "none";
     abreSidebar()
 }
@@ -55,6 +81,13 @@ function fecharListaContas(){
 
 function fecharAddCategoria() {
     let modal = document.querySelector(".ModaddCategoria")
+
+    modal.style.display = "none";
+    abreSidebar()
+}
+/* Fechar relatorios */
+function fechaRelatorios() {
+    let modal = document.querySelector(".modRelatorios")
 
     modal.style.display = "none";
     abreSidebar()
