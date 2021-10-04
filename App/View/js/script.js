@@ -104,5 +104,13 @@ function abreSidebar(){
 }
 
 
+function fechaAlerta(){
+    let modal = document.querySelector(".alerta")
+
+    modal.style.display = "none";
+    abreSidebar()
+}
+
+
 
 

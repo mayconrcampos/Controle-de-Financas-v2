@@ -23,7 +23,7 @@ class Funcoes {
               .'left: 50%;'
               .'transform: translate(-50%, -50%);'
               .'display: block;'
-              .'overflow: hidden;'
+              .'overflow: auto;'
 
               .'animation: animate;'
               .'animation-duration: 500ms;'
@@ -71,7 +71,61 @@ class Funcoes {
 
               echo $style.$modal.$tablehead.$tablebody.$tabletail;
           }else{
-            echo "ERRO! É preciso preencher os campos.";
+            $style = '<style>
+            .alerta {'
+              .'border-radius: 3px 3px 3px 3px;'
+              .'box-shadow: 1px 4px 5px 8px black;'
+              .'width: 50%;'
+              .'height: 30%;'
+              .'padding: 20px;'
+              .'background-color: var(--blue-analog);'
+              .'display: inline-block;'
+              .'color: black;'
+              .'position: absolute;'
+              .'top: 55%;'
+              .'left: 50%;'
+              .'transform: translate(-50%, -50%);'
+              .'display: block;'
+              .'overflow: auto;'
+
+              .'animation: animate;'
+              .'animation-duration: 500ms;'
+              .'}'
+
+              .'.fechaAlerta {'
+              .'width: 30px;'
+              .'height: 30px;'
+              .'border-radius: 50%;'
+              .'float: right;'
+              .'cursor: pointer;'
+              .'}'
+
+                .'.sidebar {'
+                    .'margin-left: -250;'
+                .'}'
+                
+                .'@keyframes animate {'
+                    .'from{opacity: 1;}'
+                    .'from{opacity: 0;}'
+                .'}'
+                  .'</style>';
+              
+              $modal = '<div id="" class="alerta">'
+              .'<div onclick="fechaAlerta()" class="fechaAlerta">x</div>'
+              .'<h1>Alerta!</h1>'
+              .'<div class="">';
+
+              $aviso = "<h2>É preciso preencher o campo.</h2>";
+
+
+              $tail = '</div>'
+              .'</div>';
+
+              
+              unset($_POST['cadastrar']);
+              unset($_POST['filtro']);
+              unset($_POST['descricao']);
+              echo $style.$modal.$aviso.$tail;
           }
 
         }
