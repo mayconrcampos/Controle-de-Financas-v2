@@ -131,7 +131,7 @@ input[type="submit"] {
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
-  overflow: hidden;
+  overflow: auto;
   animation: animate;
   animation-duration: 500ms;
 }
@@ -151,7 +151,7 @@ input[type="submit"] {
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
-  overflow: hidden;
+  overflow: auto;
 
   animation: animate;
   animation-duration: 500ms;
@@ -191,6 +191,7 @@ input[type="submit"] {
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
+  overflow: auto;
 }
 
 @keyframes animate {

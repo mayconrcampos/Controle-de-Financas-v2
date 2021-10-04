@@ -286,7 +286,27 @@
 
 
         <div class="tableLista">
-              <table class="table table-lg table-responsive-xl table-hover border border-dark">
+          <div class="row text-left">
+          <div class="form-group col-6">
+                              
+                              <label>Filtrar por</label>
+                              <input type="text" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
+                              <small id="" class="form-text text-muted">Filtrar por Descrição, Categoria, Comentário ou Intervalo.</small>
+              </div>
+              <div class="form-group col-3">
+                             
+                              <label>Data Inicio</label>
+                              <input type="date" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
+              </div>
+              <div class="form-group col-3">
+                             
+                              <label>Data Fim</label>
+                              <input type="date" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
+              </div>
+          </div>
+              
+
+              <table class="table table-lg table-responsive-xl table-hover border border-dark mt-3 ">
                 <thead>
                     <tr>
                       <th scope="col">Descrição</th>
@@ -309,6 +329,7 @@
                     <td></td>
                     <td></td>
                   </tr>
+
                 <!------- Aqui termina o laço foreach --------->
                   
                 </tbody>
