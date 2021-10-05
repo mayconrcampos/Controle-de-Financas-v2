@@ -3,7 +3,7 @@
 namespace App\Model;
 
 class Usuario {
-    private $id, $nome, $email;
+    private $id, $usuario, $senha, $status;
 
     // Get Set id
     public function getID(){
@@ -14,21 +14,31 @@ class Usuario {
         $this->id = $id;
     }
 
-    // Get Set nome
-    public function getNome(){
-        return $this->nome;
+    // Get Set Usuário
+    public function getUsuario(){
+        return $this->usuario;
     }
 
-    public function setNome($nome){
-        $this->nome = $nome;
+    public function setUsuario($usuario){
+        $this->usuario = $usuario;
     }
 
-    // Get Set email
-    public function getEmail(){
-        return $this->email;
+    // Get Set Senha
+    public function getSenha(){
+        return $this->senha;
     }
 
-    public function setEmail($email){
-        $this->email = $email;
+    public function setSenha($senha){
+        $this->senha = $senha;
+    }
+
+    // Get Set Status
+    public function getStatus(){
+        return $this->status;
+    }
+
+    public function setStatus($status){
+        $this->status = $status;
     }
 }
+
