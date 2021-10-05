@@ -12,7 +12,7 @@ include_once("./App/Model/DBtipoGasto.php");
 include_once("./App/Model/DBusuario.php");
 
 // Add Tipo de gasto
-if(!empty($_POST['tipo']) and !empty($_POST['categoria'])){
+/*if(!empty($_POST['tipo']) and !empty($_POST['categoria'])){
     if(!empty($_POST['cadastrar'])){
       echo "sera?";
     }else{
@@ -31,7 +31,7 @@ if(!empty($_POST['tipo']) and !empty($_POST['categoria'])){
     //$DBgasto = new DBtipoGasto();
     //$DBgasto->insert($tipoDeGasto);
   
-}
+}*/
 
 
 
