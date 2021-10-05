@@ -1,18 +1,27 @@
 <?php
-/*
-use App\Model\DB;
+
+//use App\Model\DB;
 use App\Model\Usuario;
+use App\Model\Conexao;
+use App\Model\DBusuario;
+use App\Model\DBcontrole;
+use App\Model\DBtipoGasto;
 
-include_once("./DB.php");
-include_once("./conexao.php");
+//include_once("./DB.php");
+include_once("./App/Model/conexao.php");
+include_once("./App/Model/DBcontrole.php");
+include_once("./App/Model/DBtipoGasto.php");
+include_once("./App/Model/DBusuario.php");
 
-class IndexDB {
 
-    public static function indexSelectUserDB($id){
-        $listaUser = New DB();
-        foreach($listaUser->select($id) as $user){
-            $nome = $user['nome'];
-            $email = $user['email'];
+
+class Funcoes {
+
+    public static function listaContas($id){
+        $listaContas = New \App\Model\DBcontrole($id);
+        foreach($listaContas->select($id) as $conta){
+            $descricao = $conta['nome'];
+            $valor = $conta['email'];
         }
 
         return array($nome, $email);

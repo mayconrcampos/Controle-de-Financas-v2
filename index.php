@@ -1,5 +1,41 @@
 <?php
-  include_once("./App/Controller/Funcoes.php");
+  //include_once("./App/Controller/Funcoes.php");
+  //include_once("./App/Controller/IndexDB.php");
+
+use App\Model\DBcontrole;
+use App\Model\DBtipoGasto;
+use App\Model\DBusuario;
+use App\Model\TipoGasto;
+
+include_once("./App/Model/DBcontrole.php");
+include_once("./App/Model/DBtipoGasto.php");
+include_once("./App/Model/DBusuario.php");
+
+// Add Tipo de gasto
+if(!empty($_POST['tipo']) and !empty($_POST['categoria'])){
+    if(!empty($_POST['cadastrar'])){
+      echo "sera?";
+    }else{
+      echo "Ou não?";
+    }
+    echo $_POST['tipo'].$_POST['categoria'];
+    //$tipoDeGasto = new TipoGasto();
+
+    //$tipoDeGasto->setTipo($_POST['tipo']);
+    //$tipoDeGasto->setCategoria(filter_var($_POST['categoria']), FILTER_SANITIZE_STRING);
+    //$tipoDeGasto->setIdUser(2);
+
+    unset($_POST['tipo']);
+    unset($_POST['categoria']);
+
+    //$DBgasto = new DBtipoGasto();
+    //$DBgasto->insert($tipoDeGasto);
+  
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -94,12 +130,12 @@
                   <fieldset>
 
                     <div class="d-inline alert alert-primary rounded" role="alert">
-                      <input type="radio" name="filtro" value="1" class="form-check-input" >
+                      <input type="radio" name="tipo" value="1" class="form-check-input" >
                       <label for="receitas" class="form-check-label">Receita</label>
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="filtro" value="0" class="form-check-input" checked>
+                      <input type="radio" name="tipo" value="2" class="form-check-input" checked>
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
@@ -131,14 +167,22 @@
                         </div>
 
                         <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="categoria" required>
+                    <?php $TipoGasto = new \App\Model\DBtipoGasto();  
+                          foreach($TipoGasto->select() as $gasto){      ?>
                             <option selected>------ Receitas ------</option>
+                          <?php if($gasto['tipo'] == "1"){?>
 
-                                <option value=""></option>
+                                <option value="<?php echo $gasto['categoria']?>"><?php echo $gasto['categoria']?></option>
 
+                          <?php }else{?>
                             <option selected>------ Despesas ------</option>
 
-                                <option value=""></option>
 
+                            <option value="<?php echo $gasto['categoria']?>"><?php echo $gasto['categoria']?></option>
+                          <?php } ?>
+
+
+                    <?php } ?>
                         </select>
 
                     </div>
@@ -159,6 +203,10 @@
           </div>
           
     </div>
+
+    <?php 
+      
+    ?>
 
 
 
@@ -181,23 +229,39 @@
                   </tr>
                 </thead>
                 <tbody>
+          <?php   $contas = new \App\Model\DBcontrole();
+                  $despesa = 0;
+                  $receita = 0;
+                  $saldo = 0;
+                  foreach($contas->select() as $linha) {
+                    if($linha['tipo'] == "0"){
+                      $despesa += $linha['valor'];
+                    }else{
+                      $receita += $linha['valor'];
+                    }                                      ?>
+
                   <tr>
-                    <th scope="row">Super Santos</th>
-                    <td>50,00</td>
-                    <td>10/09/2021</td>
-                    <td>Mercado</td>
-                    <td>Carne</td>
-                    <td>Despesa</td>
+                    <th scope="row"><?php echo $linha['descricao'] ?>  </th>
+                    <td><?php echo $linha['valor'] ?>                  </td>
+                    <td><?php echo $linha['data'] ?>                   </td>
+                    <td><?php echo $linha['categoria'] ?>              </td>
+                    <td><?php echo $linha['comentario'] ?>             </td>
+                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-primary'" ; ?> ><?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                   </td>
                   </tr>
-                  <tr>
-                    <th scope="row">Posto Vila Nova</th>
-                    <td>100,00</td>
-                    <td>10/09/2021</td>
-                    <td>Gasolina</td>
-                    <td></td>
-                    <td>Despesa</td>
-                  </tr>
+
+          <?php   } 
+                  $saldo = $receita - $despesa; ?>
                 </tbody>
+                <div class="sticky-bottom">
+                  <td>Receitas</td>
+                  <td>(R$) <?php echo number_format($receita, 2, ",", "."); ?>  </td>
+                  <td>Despesa</td>
+                  <td>(R$) <?php echo number_format($despesa, 2, ",", "."); ?>  </td>
+                  <td>Saldo</td>
+                  <td>(R$) <?php echo number_format($saldo, 2, ",", "."); ?>    </td>
+                </div>
+               
+
               </table>
         </div>
 
@@ -212,41 +276,41 @@
           <h1>Adicionar Categoria</h1>
           <div class="formulario border border-dark rounded">
             
-              <form class="m-3" action="#" method="post">
+              <form class="m-3" action="" method="POST">
                 <div class="form-check form-check-inline">
                   <fieldset>
 
                     <div class="d-inline alert alert-primary rounded" role="alert">
-                      <input type="radio" name="filtro" id="filtro" value="1" class="form-check-input" checked>
+                      <input type="radio" name="tipo" id="filtro" value="1" class="form-check-input" checked>
                       <label for="receitas" class="form-check-label">Receita</label>
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="filtro" id="filtro" value="2" class="form-check-input" >
+                      <input type="radio" name="tipo" id="filtro" value="0" class="form-check-input" >
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
                     <div class="input-group mt-4">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">Descrição</span>
+                          <span class="input-group-text">Categoria</span>
                         </div>
-                        <input type="text" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
+                        <input type="text" aria-label="First name" id="categoria" class="form-control form-control-lg" name="categoria" autofocus>
                     </div><br>
 
-                    <button id="inputcategoria" type="submit" name="Cadastrar" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                    <button id="inputcategoria" type="submit" name="cadastrar" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
 
                   </fieldset>
                 </div>
               </form>
 
           </div>
+        
           
     </div>
 
-    <?php Funcoes::submitCategorias($_POST['filtro'], $_POST['descricao'], $_POST['Cadastrar']);
-          unset($_POST['filtro']);
-          unset($_POST['descricao']);
-     ?>
+  
+
+ 
 
 
 
