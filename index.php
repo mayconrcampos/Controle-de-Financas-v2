@@ -104,7 +104,7 @@ include_once("./App/Model/Controle.php");
 
 
     <!-------- Modal Adiciona Conta ------------->
-    <div class="ModaddConta">
+    <div id="modaddConta" class="ModaddConta">
           <div onclick="fecharAddConta()" class="fecharAddConta">x</div>
           <h1>Adicionar Conta</h1>
           <div class="formulario border border-dark rounded">
@@ -230,7 +230,7 @@ include_once("./App/Model/Controle.php");
                     <td><?php echo $linha['data'] ?>                   </td>
                     <td><?php echo $linha['categoria'] ?>              </td>
                     <td><?php echo $linha['comentario'] ?>             </td>
-                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-primary'" ; ?> ><?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                   </td>
+                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-primary'" ; ?> > <a onclick="addConta()" href="#index.php?id=<?= $linha['id'] ?>" onclick="addConta()"> <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                  </a> </td>
                   </tr>
 
           <?php   } 
