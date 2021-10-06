@@ -2,7 +2,8 @@
 namespace App\Model;
 
 use App\Model\Conexao;
-use App\Model\Usuario;
+use App\Model\Controle;
+
 include_once("conexao.php");
 include_once("./Controle.php");
 
@@ -35,7 +36,7 @@ class DBcontrole {
             $stmt->bindValue(1, $id);
             $stmt->execute();
         }else{
-            $query = "SELECT * FROM controle ORDER BY id ASC";
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle ORDER BY data DESC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->execute();

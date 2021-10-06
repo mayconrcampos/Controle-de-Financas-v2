@@ -1,6 +1,6 @@
 <?php
-  //include_once("./App/Controller/Funcoes.php");
-  //include_once("./App/Controller/IndexDB.php");
+
+session_start();
 
 use App\Model\DBcontrole;
 use App\Model\DBtipoGasto;
@@ -10,31 +10,7 @@ use App\Model\TipoGasto;
 include_once("./App/Model/DBcontrole.php");
 include_once("./App/Model/DBtipoGasto.php");
 include_once("./App/Model/DBusuario.php");
-
-// Add Tipo de gasto
-/*if(!empty($_POST['tipo']) and !empty($_POST['categoria'])){
-    if(!empty($_POST['cadastrar'])){
-      echo "sera?";
-    }else{
-      echo "Ou não?";
-    }
-    echo $_POST['tipo'].$_POST['categoria'];
-    //$tipoDeGasto = new TipoGasto();
-
-    //$tipoDeGasto->setTipo($_POST['tipo']);
-    //$tipoDeGasto->setCategoria(filter_var($_POST['categoria']), FILTER_SANITIZE_STRING);
-    //$tipoDeGasto->setIdUser(2);
-
-    unset($_POST['tipo']);
-    unset($_POST['categoria']);
-
-    //$DBgasto = new DBtipoGasto();
-    //$DBgasto->insert($tipoDeGasto);
-  
-}*/
-
-
-
+include_once("./App/Model/Controle.php");
 
 ?>
 
@@ -110,11 +86,19 @@ include_once("./App/Model/DBusuario.php");
 
 <!-------- Conteúdo principal usuários ------------->
   <div class="conteudo text-center">
+  <?php if($_SESSION['sucesso']){?>
+
+    <h2 class="alert-success"><?php echo $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></h2>
+
+  <?php  }?>
+
+  <?php if($_SESSION['erro']){?>
+
+      <h2 class="alert-danger"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></h2>
+
+  <?php  }?>
 
     <img src="./App/View/css/Logo.png" class="img-fluid" alt="Responsive image">
-
-
-
 
 
 
@@ -125,7 +109,7 @@ include_once("./App/Model/DBusuario.php");
           <h1>Adicionar Conta</h1>
           <div class="formulario border border-dark rounded">
             
-              <form class="m-3" action="#" method="post">
+              <form class="m-2" action="./App/Controller/ADDconta.php" method="post">
                 <div class="form-check form-check-inline">
                   <fieldset>
 
@@ -135,7 +119,7 @@ include_once("./App/Model/DBusuario.php");
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="tipo" value="2" class="form-check-input" checked>
+                      <input type="radio" name="tipo" value="0" class="form-check-input" checked>
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
@@ -143,7 +127,7 @@ include_once("./App/Model/DBusuario.php");
                         <div class="input-group-prepend">
                           <span class="input-group-text">Descrição</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="descricao" required autofocus>
+                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="descricao" autofocus>
                     </div><br>
 
                     <div class="input-group mb-4">
@@ -151,14 +135,14 @@ include_once("./App/Model/DBusuario.php");
                           <span class="input-group-text">R$</span>
                         </div>
 
-                        <input type="text" name="valor" class="form-control form-control-lg" aria-label="Quantia" required>
+                        <input type="text" name="valor" class="form-control form-control-lg" aria-label="Quantia">
                     </div>
 
                     <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Data</span>
                         </div>
-                        <input type="date" aria-label="First name" class="form-control form-control-lg" name="data" required>
+                        <input type="date" aria-label="First name" class="form-control form-control-lg" name="data">
                     </div><br>
 
                     <div class="input-group mb-4">
@@ -166,21 +150,24 @@ include_once("./App/Model/DBusuario.php");
                           <label class="input-group-text" for="inputGroupSelect01" name="categoria">Categoria</label>
                         </div>
 
-                        <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="categoria" required>
+                        <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="categoria">
                     <?php $TipoGasto = new \App\Model\DBtipoGasto();  
+
                           foreach($TipoGasto->select() as $gasto){      ?>
+
                             <option selected>------ Receitas ------</option>
+
                           <?php if($gasto['tipo'] == "1"){?>
 
                                 <option value="<?php echo $gasto['categoria']?>"><?php echo $gasto['categoria']?></option>
 
                           <?php }else{?>
+
                             <option selected>------ Despesas ------</option>
 
-
                             <option value="<?php echo $gasto['categoria']?>"><?php echo $gasto['categoria']?></option>
-                          <?php } ?>
 
+                          <?php } ?>
 
                     <?php } ?>
                         </select>
@@ -204,9 +191,6 @@ include_once("./App/Model/DBusuario.php");
           
     </div>
 
-    <?php 
-      
-    ?>
 
 
 
@@ -242,7 +226,7 @@ include_once("./App/Model/DBusuario.php");
 
                   <tr>
                     <th scope="row"><?php echo $linha['descricao'] ?>  </th>
-                    <td><?php echo $linha['valor'] ?>                  </td>
+                    <td><?php echo number_format($linha['valor'], 2, ",", ".") ?>                  </td>
                     <td><?php echo $linha['data'] ?>                   </td>
                     <td><?php echo $linha['categoria'] ?>              </td>
                     <td><?php echo $linha['comentario'] ?>             </td>
@@ -422,5 +406,6 @@ include_once("./App/Model/DBusuario.php");
     <script src="./App/View/dist/js/jquery-3.2.1.slim.min.js"></script>
     <script src="./App/View/dist/js/popper.min.js"></script>
     <script src="./App/View/dist/js/bootstrap.min.js"></script>
+    <script src="./App/View/js/funcoes.js"></script>
 </body>
 </html>

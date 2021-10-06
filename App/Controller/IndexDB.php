@@ -1,5 +1,5 @@
 <?php
-
+/*
 //use App\Model\DB;
 use App\Model\Usuario;
 use App\Model\Conexao;

@@ -1,6 +1,33 @@
 <?php
 
 class Funcoes {
+    static function validaValor($num){
+      $conta = 0;                     // Variável de controle.
+      $num1 = str_split($num);        // Transforma string em um array
+      foreach($num1 as $n) {          // Itera elemento por elemento desse array
+          if($n == ","){              // Procura pelo elemento "," <- vírgula
+              $conta++;               // Se encontrar o elemento vírgula, incrementa variável $conta.
+          }
+      }
+      if($conta == 0){                // Se conta for igual a zero, não tiver vírgula ...
+          if(is_numeric($num)){       // Se for inteiro
+              $num = (double) $num;   // Transforma essa string em um double
+              return $num;            // Retorna este double.
+          }elseif(is_float($num)){    // Se for float puro, com ponto.
+              $num = (double) $num;   // Transforma essa string em um double
+              return $num;            // Retorna este double.
+          }else{                      // Se não for porra nenhuma, nem número é.
+              return false;           // Retorna false
+          }
+      }elseif($conta == 1){                       // Se tiver uma vírgula como separador.
+          $num = str_replace(",", ".", $num);     // Troca essa vírgula por um ponto.
+          return (double) $num;                   // Transforma essa string em double e retorna.
+      }else{                                      // Se não for nada disso acima, então ele tem mais vírgulas, logo é um número inválido.
+          return false;
+        
+      }
+    }
+
     static function submitCategorias($filtro, $descricao){
         $filtro = $_POST['filtro'];
         $descricao = $_POST['descricao'];
