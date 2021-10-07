@@ -14,6 +14,10 @@ include_once("../Model/Controle.php");
 
 if(!empty($_GET['id'])){
     $id = $_GET['id'];
+
+    $DBconta = new \App\Model\DBcontrole();
+
+    foreach($DBconta->select($id) as $conta);
 }
 
 ?>
@@ -78,17 +82,17 @@ if(!empty($_GET['id'])){
           <h1>Editar esta movimentação</h1>
           <div class="formulario border border-dark rounded p-3">
             
-              <form class="m-2" action="../Controller/EDconta.php" method="post">
+              <form class="m-2" action="../Controller/EDcontaDB.php" method="post">
                 <div class="form-check form-check-inline">
                   <fieldset>
 
                     <div class="d-inline alert alert-primary rounded" role="alert">
-                      <input type="radio" name="tipo" value="1" class="form-check-input" >
+                      <input type="radio" name="tipo" value="1" class="form-check-input" <?= ($conta['tipo'] == "1") ? "checked" : "" ?>>
                       <label for="receitas" class="form-check-label">Receita</label>
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="tipo" value="0" class="form-check-input" checked>
+                      <input type="radio" name="tipo" value="0" class="form-check-input" <?= ($conta['tipo'] == "0") ? "checked" : "" ?>>
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
@@ -96,7 +100,7 @@ if(!empty($_GET['id'])){
                         <div class="input-group-prepend">
                           <span class="input-group-text">Descrição</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="descricao" autofocus>
+                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="descricao" value="<?= $conta['descricao'] ?>">
                     </div><br>
 
                     <div class="input-group mb-4">
@@ -104,14 +108,14 @@ if(!empty($_GET['id'])){
                           <span class="input-group-text">R$</span>
                         </div>
 
-                        <input type="text" name="valor" class="form-control form-control-lg" aria-label="Quantia">
+                        <input type="text" name="valor" class="form-control form-control-lg" aria-label="Quantia" value="<?= $conta['valor'] ?>">
                     </div>
 
                     <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Data</span>
                         </div>
-                        <input type="date" aria-label="First name" class="form-control form-control-lg" name="data">
+                        <input type="date" aria-label="First name" class="form-control form-control-lg" name="data" value="<?= $conta['data'] ?>">
                     </div><br>
 
                     <div class="input-group mb-4">
@@ -129,7 +133,7 @@ if(!empty($_GET['id'])){
 
                           <?php if($receita['tipo'] == "1"){?>
 
-                                <option value="<?php echo $receita['tipo']?>"><?php echo $receita['categoria']?></option>
+                                <option value="<?php echo $receita['categoria']?>"><?php echo $receita['categoria']?></option>
 
                           <?php }?>
                     <?php } ?>
@@ -142,9 +146,11 @@ if(!empty($_GET['id'])){
                           
                           <?php if($despesa['tipo'] == "0"){?>
 
-                            <option value="<?php echo $despesa['tipo']?>"><?php echo $despesa['categoria']?></option>
+                            <option value="<?php echo $despesa['categoria']?>"><?php echo $despesa['categoria']?></option>
                           <?php } ?>
                     <?php } ?>
+
+                            <option selected value="<?= $conta['categoria'] ?>"><?= $conta['categoria'] ?></option>
 
                         </select>
 
@@ -154,7 +160,8 @@ if(!empty($_GET['id'])){
                         <div class="input-group-prepend">
                           <span class="input-group-text">Comentários</span>
                         </div>
-                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="comentario">
+                        <input type="hidden" name="id" value="<?= $conta['id'] ?>">
+                        <input type="text" aria-label="First name" class="form-control form-control-lg" name="comentario" value="<?= $conta['comentario'] ?>">
                     </div><br>
 
                     <input type="submit" value="Editar" class="btn btn-primary btn-lg btn-block">
