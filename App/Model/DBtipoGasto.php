@@ -26,12 +26,13 @@ class DBtipoGasto {
 
     public function select($id = null){
         if(!empty($id)){
-            $query = "SELECT * FROM TipoGasto WHERE id=? ORDER BY id ASC";
+            $query = "SELECT * FROM TipoGasto WHERE id=?";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->bindValue(1, $id);
 
             $stmt->execute();
+            
         }else{
             $query = "SELECT * FROM TipoGasto ORDER BY tipo ASC";
 

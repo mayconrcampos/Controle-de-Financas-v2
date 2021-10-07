@@ -77,10 +77,10 @@ if(!empty($_GET['id'])){
 <!-------- Conteúdo principal usuários ------------->
   <div class="conteudo text-center">
     
-    <!-------- Modal Adiciona Conta ------------->
+    <!-------- Modal Edita Conta ------------->
     <div id="modEdConta" class="ModEdConta">
           <h1>Editar esta movimentação</h1>
-          <div class="formulario border border-dark rounded p-3">
+          <div class="formulario border border-dark rounded p-3 bg-light">
             
               <form class="m-2" action="../Controller/EDcontaDB.php" method="post">
                 <div class="form-check form-check-inline">

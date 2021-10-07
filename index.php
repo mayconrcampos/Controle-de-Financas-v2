@@ -208,7 +208,7 @@ include_once("./App/Model/Controle.php");
 
 
         <div class="tableLista">
-              <table class="js-sort-table table table-lg table-responsive-xl table-hover border border-dark">
+              <table class="js-sort-table table table-md table-responsive-md table-hover border border-dark">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Descrição</th>
@@ -316,11 +316,13 @@ include_once("./App/Model/Controle.php");
 
 
         <div class="tableLista">
-              <table class="js-sort-table table table-lg table-responsive-xl table-hover border border-dark">
+              <table class="js-sort-table table table table-responsive-md table-hover border border-dark">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Tipo</th>
                         <th scope="col">Descrição (R$)</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -332,6 +334,8 @@ include_once("./App/Model/Controle.php");
                   <tr <?= ($cat['tipo'] == "0") ? "class='alert-danger'" : "class='alert-success'" ?>>
                     <th scope="row"><?= ($cat['tipo'] == "0") ? "Despesa" : "Receita" ?></th>
                     <td><?= $cat['categoria'] ?></td>
+                    <td><a href="./App/View/EDtipo.php?id=<?= $cat['id'] ?>"> <i class='bx bx-edit'></i> </a></td>
+                    <td><a href=""> <i class='bx bx-trash'></i> </a></td>
                   </tr>
                 <!------- Aqui termina o laço foreach --------->
             <?php } ?>
