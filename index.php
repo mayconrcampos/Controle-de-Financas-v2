@@ -151,27 +151,29 @@ include_once("./App/Model/Controle.php");
                         </div>
 
                         <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="categoria">
-                        <option selected>------ Receitas ------</option>
+                            <option selected>------ Receitas ------</option>
+
                     <?php $TipoReceita = new \App\Model\DBtipoGasto();  
                           
                           foreach($TipoReceita->select() as $receita){      ?>
 
                           <?php if($receita['tipo'] == "1"){?>
 
-                                <option value="<?php echo $receita['categoria']?>"><?php echo $receita['categoria']?></option>
+                                <option value="<?php echo $receita['tipo']?>"><?php echo $receita['categoria']?></option>
 
                           <?php }?>
                     <?php } ?>
 
                             <option selected>------ Despesas ------</option>
 
-                    <?php $TipoDespesa = new \App\Model\DBtipoGasto;
+                    <?php $TipoDespesa = new \App\Model\DBtipoGasto();
                      
                           foreach($TipoDespesa->select() as $despesa){?>
                           
-                          <?php if($receita['tipo'] == "0"){?>
+                          <?php if($despesa['tipo'] == "0"){?>
 
-                            <option value="<?php echo $despesa['categoria']?>"><?php echo $despesa['categoria']?></option>
+                            <option value="<?php echo $despesa['tipo']?>"><?php echo $despesa['categoria']?></option>
+                            
                           <?php } ?>
                     <?php } ?>
 
