@@ -120,7 +120,8 @@ if(!empty($_GET['id'])){
                         </div>
 
                         <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="categoria">
-                    
+
+                        <!-------- Preenche primeiro as Receitas-------->
                         <option selected>------ Receitas ------</option>
                     <?php $TipoReceita = new \App\Model\DBtipoGasto();  
                           
@@ -132,10 +133,10 @@ if(!empty($_GET['id'])){
 
                           <?php }?>
                     <?php } ?>
+                        <!---------   Preenche as despesas   ----------->
+                        <option selected>------ Despesas ------</option>
 
-                            <option selected>------ Despesas ------</option>
-
-                    <?php $TipoDespesa = new \App\Model\DBtipoGasto;
+                    <?php $TipoDespesa = new \App\Model\DBtipoGasto();
                      
                           foreach($TipoDespesa->select() as $despesa){?>
                           
@@ -144,6 +145,7 @@ if(!empty($_GET['id'])){
                             <option value="<?php echo $despesa['tipo']?>"><?php echo $despesa['categoria']?></option>
                           <?php } ?>
                     <?php } ?>
+
                         </select>
 
                     </div>

@@ -173,7 +173,7 @@ include_once("./App/Model/Controle.php");
                           <?php if($despesa['tipo'] == "0"){?>
 
                             <option value="<?php echo $despesa['tipo']?>"><?php echo $despesa['categoria']?></option>
-                            
+
                           <?php } ?>
                     <?php } ?>
 
@@ -208,7 +208,7 @@ include_once("./App/Model/Controle.php");
 
 
         <div class="tableLista">
-              <table class="table table-lg table-responsive-xl table-hover border border-dark">
+              <table class="js-sort-table table table-lg table-responsive-xl table-hover border border-dark">
                 <thead>
                   <tr>
                     <th scope="col">Descrição</th>
@@ -217,6 +217,8 @@ include_once("./App/Model/Controle.php");
                     <th scope="col">Categoria</th>
                     <th scope="col">Comentário</th>
                     <th scope="col">Tipo</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -237,7 +239,9 @@ include_once("./App/Model/Controle.php");
                     <td><?php echo $linha['data'] ?>                   </td>
                     <td><?php echo $linha['categoria'] ?>              </td>
                     <td><?php echo $linha['comentario'] ?>             </td>
-                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-primary'" ; ?> > <a onclick="addConta()" href="./App/View/EDconta.php?id=<?= $linha['id'] ?>" onclick="addConta()"> <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                  </a> </td>
+                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger' text-dark" : "class='alert-primary text-dark'" ; ?> >  <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                   </td>
+                    <td><a onclick="addConta()" href="./App/View/EDconta.php?id=<?= $linha['id'] ?>" onclick="addConta()"><i class='bx bx-edit'></i></a></td>
+                    <td><a href="./App/Controller/DELconta.php?id=<?= $linha['id'] ?>" onclick="return confirm('Deseja realmente excluir este registro?')"><i class='bx bx-trash'></i></a></td>
                   </tr>
 
           <?php   } 
@@ -312,7 +316,7 @@ include_once("./App/Model/Controle.php");
 
 
         <div class="tableLista">
-              <table class="table table-lg table-responsive-xl table-hover border border-dark">
+              <table class="js-sort-table table table-lg table-responsive-xl table-hover border border-dark">
                 <thead>
                     <tr>
                         <th scope="col">Tipo</th>
@@ -417,5 +421,6 @@ include_once("./App/Model/Controle.php");
     <script src="./App/View/dist/js/popper.min.js"></script>
     <script src="./App/View/dist/js/bootstrap.min.js"></script>
     <script src="./App/View/js/funcoes.js"></script>
+    <script src="./App/View/js/sort-table.js"></script>
 </body>
 </html>
