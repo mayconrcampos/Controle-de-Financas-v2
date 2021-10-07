@@ -18,6 +18,7 @@ $categoria = filter_input(INPUT_POST, "categoria", FILTER_SANITIZE_STRING);
 $comentario = filter_input(INPUT_POST, "comentario", FILTER_SANITIZE_STRING);
 $tipo = filter_input(INPUT_POST, "tipo");
 $id = $_POST['id'];
+
 $idUser = "2";
 
         //echo "desc ".$descricao."<br>";
@@ -28,7 +29,6 @@ $idUser = "2";
         //echo "tipo ".$tipo."<br>";
         //echo "iduser ".$idUser."<br>";
         //echo "id ".$id."<br>";
-
       
       
 if(!empty($descricao) and !empty($valor) and !empty($data) and !empty($categoria)){

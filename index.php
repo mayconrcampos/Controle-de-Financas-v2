@@ -88,13 +88,13 @@ include_once("./App/Model/Controle.php");
   <div class="conteudo text-center">
   <?php if($_SESSION['sucesso']){?>
 
-    <h2 class="alert-success"><?php echo $_SESSION['sucesso']; unset($_SESSION['sucesso']); header("Refresh: 2; ./index.php"); ?></h2>
+      <h3 class="alert-success"><?php echo $_SESSION['sucesso']; unset($_SESSION['sucesso']); header("Refresh: 1; ./index.php"); ?></h3>
 
   <?php  }?>
 
   <?php if($_SESSION['erro']){?>
 
-      <h2 class="alert-danger"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); header("Refresh: 2; ./index.php"); ?></h2>
+      <h3 class="alert-danger"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); header("Refresh: 1; ./index.php"); ?></h3>
 
   <?php  }?>
 
@@ -107,7 +107,7 @@ include_once("./App/Model/Controle.php");
     <div id="modaddConta" class="ModaddConta">
           <div onclick="fecharAddConta()" class="fecharAddConta">x</div>
           <h1>Adicionar Conta</h1>
-          <div class="formulario border border-dark rounded">
+          <div class="formulario border border-dark rounded p-3 bg-light">
             
               <form class="m-2" action="./App/Controller/ADDconta.php" method="post">
                 <div class="form-check form-check-inline">
@@ -209,7 +209,7 @@ include_once("./App/Model/Controle.php");
 
         <div class="tableLista">
               <table class="js-sort-table table table-lg table-responsive-xl table-hover border border-dark">
-                <thead>
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">Descrição</th>
                     <th scope="col">Valor (R$)</th>
@@ -239,7 +239,7 @@ include_once("./App/Model/Controle.php");
                     <td><?php echo $linha['data'] ?>                   </td>
                     <td><?php echo $linha['categoria'] ?>              </td>
                     <td><?php echo $linha['comentario'] ?>             </td>
-                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger' text-dark" : "class='alert-primary text-dark'" ; ?> >  <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                   </td>
+                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-success'" ; ?> >  <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                   </td>
                     <td><a onclick="addConta()" href="./App/View/EDconta.php?id=<?= $linha['id'] ?>" onclick="addConta()"><i class='bx bx-edit'></i></a></td>
                     <td><a href="./App/Controller/DELconta.php?id=<?= $linha['id'] ?>" onclick="return confirm('Deseja realmente excluir este registro?')"><i class='bx bx-trash'></i></a></td>
                   </tr>
@@ -269,7 +269,7 @@ include_once("./App/Model/Controle.php");
     <div class="ModaddCategoria">
           <div onclick="fecharAddCategoria()" class="fecharAddCategoria">x</div>
           <h1>Adicionar Categoria</h1>
-          <div class="formulario border border-dark rounded">
+          <div class="formulario border border-dark rounded p-3 bg-light">
             
               <form class="m-3" action="./App/Controller/ADDcategoria.php" method="POST">
                 <div class="form-check form-check-inline">
