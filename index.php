@@ -317,7 +317,7 @@ include_once("./App/Model/Controle.php");
 
         <div class="tableLista">
               <table class="js-sort-table table table-lg table-responsive-xl table-hover border border-dark">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">Tipo</th>
                         <th scope="col">Descrição (R$)</th>
@@ -329,7 +329,7 @@ include_once("./App/Model/Controle.php");
                 <?php $categoria = new \App\Model\DBtipoGasto(); 
                 
                   foreach($categoria->select() as $cat){ ?>
-                  <tr>
+                  <tr <?= ($cat['tipo'] == "0") ? "class='alert-danger'" : "class='alert-success'" ?>>
                     <th scope="row"><?= ($cat['tipo'] == "0") ? "Despesa" : "Receita" ?></th>
                     <td><?= $cat['categoria'] ?></td>
                   </tr>
