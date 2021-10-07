@@ -3,7 +3,7 @@ namespace App\Model;
 
 use App\Model\Conexao;
 use App\Model\Usuario;
-include_once("conexao.php");
+include_once("./conexao.php");
 include_once("./TipoGasto.php");
 
 
