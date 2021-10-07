@@ -322,13 +322,13 @@ include_once("./App/Model/Controle.php");
                 <!----- Aqui vai o laço foreach ------>
                 <?php $categoria = new \App\Model\DBtipoGasto(); 
                 
-                  foreach($categoria->select() as $cat) ?>
+                  foreach($categoria->select() as $cat){ ?>
                   <tr>
                     <th scope="row"><?= ($cat['tipo'] == "0") ? "Despesa" : "Receita" ?></th>
                     <td><?= $cat['categoria'] ?></td>
                   </tr>
                 <!------- Aqui termina o laço foreach --------->
-                  
+            <?php } ?>
                 </tbody>
               </table>
         </div>

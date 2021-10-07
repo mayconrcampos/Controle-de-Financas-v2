@@ -33,7 +33,7 @@ class DBtipoGasto {
 
             $stmt->execute();
         }else{
-            $query = "SELECT * FROM TipoGasto ORDER BY categoria ASC";
+            $query = "SELECT * FROM TipoGasto ORDER BY tipo ASC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->execute();

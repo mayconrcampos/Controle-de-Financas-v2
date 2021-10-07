@@ -7,8 +7,8 @@ use App\Model\DBusuario;
 use App\Model\TipoGasto;
 
 include_once("../Model/DBtipoGasto.php");
+include_once("../Model/TipoGasto.php");
 include_once("../Model/DBusuario.php");
-include_once("../Model/Controle.php");
 
 
     $categoria = filter_input(INPUT_POST, "categoria", FILTER_SANITIZE_STRING);
@@ -18,21 +18,26 @@ include_once("../Model/Controle.php");
 
     if(!empty($categoria)){
 
-        echo "Categoria: ".$categoria."<br>";
-        echo "Tipo: ".$tipo."<br>";
-        echo "idUser: ".$idUser."<br>";
+        //echo "Categoria: ".$categoria."<br>";
+        //echo "Tipo: ".$tipo."<br>";
+        //echo "idUser: ".$idUser."<br>";
 
-        $tipoCat = new \App\Model\TipoGasto();
-        $tipoCat->setCategoria($categoria);
-        $tipoCat->setTipo($tipo);
-        $tipoCat->setIdUser($idUser);
+        $tipoGasto = new \App\Model\TipoGasto();
+
+        $tipoGasto->setCategoria($categoria);
+        $tipoGasto->setTipo($tipo);
+        $tipoGasto->setIdUser($idUser);
+
+        //echo "Categoria: ".$tipoGasto->getCategoria()."<br>";
+        //echo "tipo: ".$tipoGasto->getTipo()."<br>";
+        //echo "iduser: ".$tipoGasto->getIdUser()."<br>";
 
         $DBCategoria = new \App\Model\DBtipoGasto();
-        $DBCategoria->insert($tipoCat);
+        $DBCategoria->insert($tipoGasto);
 
         $_SESSION['sucesso'] = "Movimentação cadastrada com sucesso!";
         header("Location: ../../index.php");
     }else{
-        $_SESSION['erro'] = "Erro! É preciso preencher os campos.";
+        $_SESSION['erro'] = "Erro! É preciso preencher o campo.";
         header("Location: ../../index.php");
     }
