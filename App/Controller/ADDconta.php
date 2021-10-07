@@ -26,13 +26,13 @@ include_once("../Controller/Funcoes.php");
       if(!empty($descricao) and !empty($valor) and !empty($data) and !empty($categoria) and !empty($idUser)){
 
 
-        echo "desc ".$descricao."<br>";
-        echo "valor ".$valor."<br>";
-        echo "data ".$data."<br>";
-        echo "categoria ".$categoria."<br>";
-        echo "coment ".$comentario."<br>";
-        echo "tipo ".$tipo."<br>";
-        echo "iduser ".$idUser."<br>";
+        //echo "desc ".$descricao."<br>";
+        //echo "valor ".$valor."<br>";
+        //echo "data ".$data."<br>";
+        //echo "categoria ".$categoria."<br>";
+        //echo "coment ".$comentario."<br>";
+        //echo "tipo ".$tipo."<br>";
+        //echo "iduser ".$idUser."<br>";
 
         $controle = new \App\Model\Controle();
           
@@ -50,7 +50,7 @@ include_once("../Controller/Funcoes.php");
         $_SESSION['sucesso'] = "Movimentação cadastrada com sucesso!";
         header("Location: ../../index.php");
       }else{
-        $_SESSION['erro'] = "Erro! É preciso preencher a porra toda.";
+        $_SESSION['erro'] = "Erro! É preciso preencher os campos.";
         header("Location: ../../index.php");
       }
     ?>

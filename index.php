@@ -63,7 +63,7 @@ include_once("./App/Model/Controle.php");
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link text-dark" href="#" onclick="listaConta()"><i class='bx bx-list-ul' ></i> Lista Contas</a>
+                <a class="nav-link text-dark" href="#" onclick="listaConta()"><i class='bx bx-list-ul'></i> Lista Contas</a>
                 </li>
 
 
@@ -73,7 +73,7 @@ include_once("./App/Model/Controle.php");
 
                   <div class="dropdown-menu">
                     <a class="dropdown-item" onclick="addCategoria()"  href='#'><i class='bx bxs-comment-add'></i> Adicionar</a>
-                    <a class="dropdown-item"  href="#" onclick="listaCategorias1()"><i class='bx bx-list-ul' ></i> Listar</a>
+                    <a class="dropdown-item" onclick="listaCategorias1()" href="#"><i class='bx bx-list-ul' ></i> Listar</a>
                   </div>
                 </li>
 
@@ -88,13 +88,13 @@ include_once("./App/Model/Controle.php");
   <div class="conteudo text-center">
   <?php if($_SESSION['sucesso']){?>
 
-    <h2 class="alert-success"><?php echo $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></h2>
+    <h2 class="alert-success"><?php echo $_SESSION['sucesso']; unset($_SESSION['sucesso']); header("Refresh: 2; ./index.php"); ?></h2>
 
   <?php  }?>
 
   <?php if($_SESSION['erro']){?>
 
-      <h2 class="alert-danger"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); ?></h2>
+      <h2 class="alert-danger"><?php echo $_SESSION['erro']; unset($_SESSION['erro']); header("Refresh: 2; ./index.php"); ?></h2>
 
   <?php  }?>
 
@@ -151,25 +151,30 @@ include_once("./App/Model/Controle.php");
                         </div>
 
                         <select class="custom-select custom-select-lg" id="inputGroupSelect01" name="categoria">
-                    <?php $TipoGasto = new \App\Model\DBtipoGasto();  
+                        <option selected>------ Receitas ------</option>
+                    <?php $TipoReceita = new \App\Model\DBtipoGasto();  
+                          
+                          foreach($TipoReceita->select() as $receita){      ?>
 
-                          foreach($TipoGasto->select() as $gasto){      ?>
+                          <?php if($receita['tipo'] == "1"){?>
 
-                            <option selected>------ Receitas ------</option>
+                                <option value="<?php echo $receita['categoria']?>"><?php echo $receita['categoria']?></option>
 
-                          <?php if($gasto['tipo'] == "1"){?>
-
-                                <option value="<?php echo $gasto['categoria']?>"><?php echo $gasto['categoria']?></option>
-
-                          <?php }else{?>
+                          <?php }?>
+                    <?php } ?>
 
                             <option selected>------ Despesas ------</option>
 
-                            <option value="<?php echo $gasto['categoria']?>"><?php echo $gasto['categoria']?></option>
+                    <?php $TipoDespesa = new \App\Model\DBtipoGasto;
+                     
+                          foreach($TipoDespesa->select() as $despesa){?>
+                          
+                          <?php if($receita['tipo'] == "0"){?>
 
+                            <option value="<?php echo $despesa['categoria']?>"><?php echo $despesa['categoria']?></option>
                           <?php } ?>
-
                     <?php } ?>
+
                         </select>
 
                     </div>
@@ -230,7 +235,7 @@ include_once("./App/Model/Controle.php");
                     <td><?php echo $linha['data'] ?>                   </td>
                     <td><?php echo $linha['categoria'] ?>              </td>
                     <td><?php echo $linha['comentario'] ?>             </td>
-                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-primary'" ; ?> > <a onclick="addConta()" href="#index.php?id=<?= $linha['id'] ?>" onclick="addConta()"> <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                  </a> </td>
+                    <td <?php echo ($linha['tipo'] == "0") ? "class='alert-danger'" : "class='alert-primary'" ; ?> > <a onclick="addConta()" href="./App/View/EDconta.php?id=<?= $linha['id'] ?>" onclick="addConta()"> <?php echo ($linha['tipo'] == "0") ? 'Despesa' : 'Receita'; ?>                  </a> </td>
                   </tr>
 
           <?php   } 
@@ -260,7 +265,7 @@ include_once("./App/Model/Controle.php");
           <h1>Adicionar Categoria</h1>
           <div class="formulario border border-dark rounded">
             
-              <form class="m-3" action="" method="POST">
+              <form class="m-3" action="./App/Controller/ADDcategoria.php" method="POST">
                 <div class="form-check form-check-inline">
                   <fieldset>
 
@@ -315,9 +320,12 @@ include_once("./App/Model/Controle.php");
                 <tbody>
 
                 <!----- Aqui vai o laço foreach ------>
+                <?php $categoria = new \App\Model\DBtipoGasto(); 
+                
+                  foreach($categoria->select() as $cat) ?>
                   <tr>
-                    <th scope="row">Super Santos</th>
-                    <td>50,00</td>
+                    <th scope="row"><?= ($cat['tipo'] == "0") ? "Despesa" : "Receita" ?></th>
+                    <td><?= $cat['categoria'] ?></td>
                   </tr>
                 <!------- Aqui termina o laço foreach --------->
                   
