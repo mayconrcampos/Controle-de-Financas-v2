@@ -335,7 +335,7 @@ include_once("./App/Model/Controle.php");
                     <th scope="row"><?= ($cat['tipo'] == "0") ? "Despesa" : "Receita" ?></th>
                     <td><?= $cat['categoria'] ?></td>
                     <td><a href="./App/View/EDtipo.php?id=<?= $cat['id'] ?>"> <i class='bx bx-edit'></i> </a></td>
-                    <td><a href=""> <i class='bx bx-trash'></i> </a></td>
+                    <td><a href="./App/Controller/DELtipo.php?id=<?= $cat['id'] ?>" onclick="return confirm('Você realmente deseja excluir este registro?')"> <i class='bx bx-trash'></i> </a></td>
                   </tr>
                 <!------- Aqui termina o laço foreach --------->
             <?php } ?>

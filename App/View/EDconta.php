@@ -164,7 +164,7 @@ if(!empty($_GET['id'])){
                         <input type="text" aria-label="First name" class="form-control form-control-lg" name="comentario" value="<?= $conta['comentario'] ?>">
                     </div><br>
 
-                    <input type="submit" value="Editar" class="btn btn-primary btn-lg btn-block">
+                    <input type="submit" value="Editar Movimentação" class="btn btn-primary btn-lg btn-block">
 
                   </fieldset>
                 </div>

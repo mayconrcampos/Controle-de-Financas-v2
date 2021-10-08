@@ -1,24 +1,27 @@
 <?php
 
-session_start();
+//session_start();
 
+
+use App\Model\DBcontrole;
 use App\Model\DBtipoGasto;
+use App\Model\DBusuario;
 use App\Model\TipoGasto;
 
+//include_once("../Model/DBcontrole.php");
 include_once("../Model/DBtipoGasto.php");
-include_once("../Model/TipoGasto.php");
+include_once("../Model/DBusuario.php");
+//include_once("../Model/Controle.php");
 
 if(!empty($_GET['id'])){
     $id = $_GET['id'];
 
-    $DBtipo = new DBtipoGasto();
+    $DBtipo = new \App\Model\DBtipoGasto();
 
-    echo $id;
     foreach($DBtipo->select($id) as $tipoGasto);
 
-    echo $tipoGasto['categoria'];
 }
-/*
+
 ?>
 
 <!DOCTYPE html>
@@ -86,12 +89,12 @@ if(!empty($_GET['id'])){
                   <fieldset>
 
                     <div class="d-inline alert alert-primary rounded" role="alert">
-                      <input type="radio" name="tipo" id="filtro" value="1" class="form-check-input" <?= ($tipo['tipo'] == "1") ? "checked" : "" ?>>
+                      <input type="radio" name="tipo" id="filtro" value="1" class="form-check-input" <?= ($tipoGasto['tipo'] == "1") ? "checked" : "" ?>>
                       <label for="receitas" class="form-check-label">Receita</label>
                     </div>
 
                     <div class="d-inline alert alert-danger rounded" role="alert">
-                      <input type="radio" name="tipo" id="filtro" value="0" class="form-check-input" <?= ($tipo['tipo'] == "0") ? "checked" : "" ?>>
+                      <input type="radio" name="tipo" id="filtro" value="0" class="form-check-input" <?= ($tipoGasto['tipo'] == "0") ? "checked" : "" ?>>
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
 
@@ -99,10 +102,10 @@ if(!empty($_GET['id'])){
                         <div class="input-group-prepend">
                           <span class="input-group-text">Categoria</span>
                         </div>
-                        <input type="text" aria-label="First name" id="categoria" class="form-control form-control-lg" name="categoria" autofocus>
+                        <input type="text" aria-label="First name" id="categoria" class="form-control form-control-lg" name="categoria" value="<?= $tipoGasto['categoria'] ?>">
                     </div><br>
-
-                    <button id="inputcategoria" type="submit" name="cadastrar" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                    <input type="hidden" name="id" value=<?= $tipoGasto['id'] ?>>
+                    <button id="inputcategoria" type="submit" name="cadastrar" class="btn btn-primary btn-lg btn-block">Editar Categoria</button>
 
                   </fieldset>
                 </div>

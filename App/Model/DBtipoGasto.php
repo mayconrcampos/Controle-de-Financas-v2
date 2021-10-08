@@ -63,4 +63,13 @@ class DBtipoGasto {
     }
 
     // delete
+
+    public function delete($id){
+        $query = "DELETE FROM TipoGasto WHERE id=?";
+
+        $stmt = \App\Model\Conexao::getConn()->prepare($query);
+        $stmt->bindValue(1, $id);
+
+        $stmt->execute();
+    }
 }
