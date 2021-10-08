@@ -23,7 +23,7 @@ include_once("../Controller/Funcoes.php");
     $idUser = "2";
       
       
-      if(!empty($descricao) and !empty($valor) and !empty($data) and !empty($categoria) and !empty($idUser)){
+      if(!empty($descricao) and !empty($valor) and !empty($data) and !empty($categoria)){
 
 
         //echo "desc ".$descricao."<br>";

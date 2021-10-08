@@ -159,7 +159,7 @@ include_once("./App/Model/Controle.php");
 
                           <?php if($receita['tipo'] == "1"){?>
 
-                                <option value="<?php echo $receita['tipo']?>"><?php echo $receita['categoria']?></option>
+                                <option value="<?php echo $receita['categoria']?>"><?php echo $receita['categoria']?></option>
 
                           <?php }?>
                     <?php } ?>
@@ -172,7 +172,7 @@ include_once("./App/Model/Controle.php");
                           
                           <?php if($despesa['tipo'] == "0"){?>
 
-                            <option value="<?php echo $despesa['tipo']?>"><?php echo $despesa['categoria']?></option>
+                            <option value="<?php echo $despesa['categoria']?>"><?php echo $despesa['categoria']?></option>
 
                           <?php } ?>
                     <?php } ?>
