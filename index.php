@@ -78,7 +78,7 @@ include_once("./App/Model/Controle.php");
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link text-dark" href="#" onclick="modRelatorios()"><i class='bx bxs-file-find'></i> Relatórios</a>
+                <a class="nav-link text-dark" href="./App/View/relatorios.php"><i class='bx bxs-file-find'></i> Relatórios</a>
                 </li>
             </ul>
         </nav>
