@@ -29,14 +29,22 @@ class DBcontrole {
     // select
 
     public function select($id = null){
+        $data_fim = date("Y/m/d");
+        $data_inicio = date("Y/m")."/01";
+        
         if(!empty($id)){
+            
+
             $query = "SELECT * FROM controle WHERE id=?";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->bindValue(1, $id);
             $stmt->execute();
         }else{
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle ORDER BY data DESC";
+
+            // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
+
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser='2' AND data BETWEEN '$data_inicio' AND '$data_fim' ORDER BY data DESC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->execute();
