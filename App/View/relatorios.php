@@ -98,6 +98,9 @@ include_once("./App/Model/Controle.php");
                 <div class="col-6">
                   <input type="date" class="form-control" placeholder="Last name">
                 </div>
+                <div class="col-12">
+                  <input type="submit" class="form-control btn btn-primary mt-4" value="Pesquisar" placeholder="Last name">
+                </div>
               </div>
             </form>
 

@@ -58,6 +58,42 @@ class DBcontrole {
         }
     }
 
+    // select Relatorios
+
+    public function selectRelatorios($descricao = null, $categoria = null, $data_inicio = null, $data_fim = null){
+        //$data_fim = date("Y/m/d");
+        //$data_inicio = date("Y/m")."/01";
+        
+
+        if($descricao OR !$categoria and !$data_inicio and !$data_fim){
+            $data_fim = date("Y/m/d");
+            $data_inicio = date("Y/m")."/01";
+            
+            $query = "SELECT * FROM controle WHERE descricao like '%?%' OR categoria LIKE '%?%' AND data BETWEEN '$data_inicio' AND '$data_fim'";
+
+            $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->bindValue(1, $descricao);
+            $stmt->bindValue(2, $categoria);
+            $stmt->execute();
+
+        }elseif($descricao and $categoria and $data_inicio and $data_fim){
+
+            // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
+
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser='2' AND data BETWEEN '$data_inicio' AND '$data_fim' ORDER BY data DESC";
+
+            $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->execute();
+        }
+
+        if($stmt->rowCount() > 0){
+            $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $resultado;
+        }else{
+            return [];
+        }
+    }
+
     // update
 
     public function update(Controle $controle){
