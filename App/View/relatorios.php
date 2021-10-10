@@ -7,10 +7,10 @@ use App\Model\DBtipoGasto;
 use App\Model\DBusuario;
 use App\Model\TipoGasto;
 
-include_once("./App/Model/DBcontrole.php");
-include_once("./App/Model/DBtipoGasto.php");
-include_once("./App/Model/DBusuario.php");
-include_once("./App/Model/Controle.php");
+include_once("../Model/DBcontrole.php");
+include_once("../Model/DBtipoGasto.php");
+include_once("../Model/DBusuario.php");
+include_once("../Model/Controle.php");
 
 ?>
 
@@ -86,17 +86,17 @@ include_once("./App/Model/Controle.php");
 
 
         <div class="tableLista">
-            <form>
+            <form method="POST" action="">
               <div class="form-row">
                 <div class="col-12 mb-3 text-left">
-                  <input type="text" class="form-control" placeholder="Filtrar">
+                  <input type="text" class="form-control" name='descricao' placeholder="Filtrar">
                   <small class="ml-3">Filtrar por: Descrição / Categoria</small>
                 </div>
                 <div class="col-6">
-                  <input type="date" class="form-control" placeholder="Last name">
+                  <input type="date" class="form-control" name="data_ini" placeholder="Last name">
                 </div>
                 <div class="col-6">
-                  <input type="date" class="form-control" placeholder="Last name">
+                  <input type="date" class="form-control" name="data_fim" placeholder="Last name">
                 </div>
                 <div class="col-12">
                   <input type="submit" class="form-control btn btn-primary mt-4" value="Pesquisar" placeholder="Last name">
@@ -122,15 +122,26 @@ include_once("./App/Model/Controle.php");
                 <tbody>
 
                 <!----- Aqui vai o laço foreach ------>
-                  <tr>
-                    <th scope="row">Super Santos</th>
-                    <td>50,00</td>
-                    <td>10/10/2021</td>
-                    <td>Mercado</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+            <?php 
+                  if(!empty($_POST['descricao']) or !empty($_POST['data_ini']) and !empty($_POST['data_fim'])){
+                      $pesquisa = $_POST['descricao'];
+                      $data_ini = $_POST['data_ini'];
+                      $data_fim = $_POST['data_fim'];
 
+                      $relatorios = new \App\Model\DBcontrole();
+                  
+                      foreach($relatorios->selectRelatorios($pesquisa, $data_ini, $data_fim, "2") as $linha){  ?>
+                          <tr>
+                            <th scope="row"><?= $linha['descricao'] ?></th>
+                            <td><?= $linha['valor'] ?></td>
+                            <td><?= $linha['data'] ?></td>
+                            <td><?= $linha['categoria'] ?></td>
+                            <td><?= $linha['comentario'] ?></td>
+                            <td><?= $linha['tipo'] ?></td>
+                          </tr>
+
+                <?php }  ?>
+            <?php }  ?>
 
                 <!------- Aqui termina o laço foreach --------->
                   

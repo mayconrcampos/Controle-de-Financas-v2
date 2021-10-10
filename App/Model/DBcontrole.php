@@ -31,6 +31,7 @@ class DBcontrole {
     public function select($id = null){
         $data_fim = date("Y/m/d");
         $data_inicio = date("Y/m")."/01";
+        $iduser = "2";
         
         if(!empty($id)){
             
@@ -44,9 +45,12 @@ class DBcontrole {
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser='2' AND data BETWEEN '$data_inicio' AND '$data_fim' ORDER BY data DESC";
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND data BETWEEN ? AND ? ORDER BY data DESC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->bindValue(1, $iduser);
+            $stmt->bindValue(2, $data_inicio);
+            $stmt->bindValue(3, $data_fim);
             $stmt->execute();
         }
 
@@ -58,33 +62,54 @@ class DBcontrole {
         }
     }
 
-    // select Relatorios
+    // select Relatorios método estático
 
-    public function selectRelatorios($descricao = null, $categoria = null, $data_inicio = null, $data_fim = null){
+    public function selectRelatorios($pesquisa = null, $data_inicio = null, $data_fim = null, $userId=null){
         //$data_fim = date("Y/m/d");
         //$data_inicio = date("Y/m")."/01";
         
 
-        if($descricao OR !$categoria and !$data_inicio and !$data_fim){
+        if($pesquisa and !$data_inicio and !$data_fim){
             $data_fim = date("Y/m/d");
             $data_inicio = date("Y/m")."/01";
             
-            $query = "SELECT * FROM controle WHERE descricao like '%?%' OR categoria LIKE '%?%' AND data BETWEEN '$data_inicio' AND '$data_fim'";
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE descricao=? OR categoria=? AND data BETWEEN ? AND ? AND userid=?";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
-            $stmt->bindValue(1, $descricao);
-            $stmt->bindValue(2, $categoria);
+            $stmt->bindValue(1, $pesquisa);
+            $stmt->bindValue(2, $pesquisa);
+            $stmt->bindValue(3, $data_inicio);
+            $stmt->bindValue(4, $data_fim);
+            $stmt->bindValue(5, $userId);
             $stmt->execute();
 
-        }elseif($descricao and $categoria and $data_inicio and $data_fim){
+        }elseif($pesquisa and $data_inicio and $data_fim){
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser='2' AND data BETWEEN '$data_inicio' AND '$data_fim' ORDER BY data DESC";
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE descricao LIKE %?% AND categoria LIKE %?% AND iduser=? AND data BETWEEN ? AND ? ORDER BY data ASC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->bindValue(1, $pesquisa);
+            $stmt->bindValue(2, $pesquisa);
+            $stmt->bindValue(3, $userId);
+            $stmt->bindValue(4, $data_inicio);
+            $stmt->bindValue(5, $data_fim);
+            $stmt->execute();
+
+        }elseif(!$pesquisa and $data_inicio and $data_fim){
+
+            // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
+
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND data BETWEEN ? AND ? ORDER BY data ASC";
+
+            $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->bindValue(1, $userId);
+            $stmt->bindValue(2, $data_inicio);
+            $stmt->bindValue(3, $data_fim);
             $stmt->execute();
         }
+
 
         if($stmt->rowCount() > 0){
             $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
