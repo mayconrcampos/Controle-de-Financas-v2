@@ -62,32 +62,65 @@ class DBcontrole {
         }
     }
 
-    // select Relatorios método estático
+    // select Relatorios
 
     public function selectRelatorios($pesquisa = null, $data_inicio = null, $data_fim = null, $userId=null){
         //$data_fim = date("Y/m/d");
         //$data_inicio = date("Y/m")."/01";
         
 
-        if($pesquisa and !$data_inicio and !$data_fim){
+        if(!$pesquisa and !$data_inicio and !$data_fim){
+            echo "Não Não Não ok e funcionando filtro das datas";
             $data_fim = date("Y/m/d");
             $data_inicio = date("Y/m")."/01";
-            
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE descricao=? OR categoria=? AND data BETWEEN ? AND ? AND userid=?";
-
-            $stmt = \App\Model\Conexao::getConn()->prepare($query);
-            $stmt->bindValue(1, $pesquisa);
-            $stmt->bindValue(2, $pesquisa);
-            $stmt->bindValue(3, $data_inicio);
-            $stmt->bindValue(4, $data_fim);
-            $stmt->bindValue(5, $userId);
-            $stmt->execute();
-
-        }elseif($pesquisa and $data_inicio and $data_fim){
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE descricao LIKE %?% AND categoria LIKE %?% AND iduser=? AND data BETWEEN ? AND ? ORDER BY data ASC";
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND data BETWEEN ? AND ? ORDER BY data DESC";
+
+            $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->bindValue(1, $userId);
+            $stmt->bindValue(2, $data_inicio);
+            $stmt->bindValue(3, $data_fim);
+
+            $stmt->execute();
+        
+
+        }elseif($pesquisa and !$data_inicio and !$data_fim){
+            echo "Sim Não Não ok, mas nao funciona filtro da data";
+
+            $data_fim = date("Y/m/d");
+            $data_inicio = date("Y/m")."/01";
+            
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE (iduser=? AND descricao LIKE ? OR categoria LIKE ?) AND data BETWEEN ? AND ? ORDER BY data DESC";
+
+            $pesquisa = "%".$pesquisa."%";
+
+            //echo "pesquisa: ".$pesquisa."<br>";
+            //echo "data ini: ".$data_inicio."<br>";
+            //echo "data fim: ".$data_fim."<br>";
+            //echo "iduser  : ".$userId."<br>";
+            
+
+            $stmt = \App\Model\Conexao::getConn()->prepare($query);
+            $stmt->bindValue(1, $userId);
+            $stmt->bindValue(2, $pesquisa, \PDO::PARAM_STR);
+            $stmt->bindValue(3, $pesquisa, \PDO::PARAM_STR);
+            $stmt->bindValue(4, $data_inicio, \PDO::PARAM_STR);
+            $stmt->bindValue(5, $data_fim, \PDO::PARAM_STR);
+
+            //$stmt->bindValue(2, $pesquisa);
+            //$stmt->bindValue(3, $pesquisa);
+            
+            $stmt->execute();
+
+        }elseif($pesquisa and $data_inicio and $data_fim){
+            echo "Sim Sim Sim ok, mas não funciona filtro entre datas";
+            // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
+
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE descricao LIKE ? OR categoria LIKE ? AND iduser=? AND data BETWEEN ? AND ? ORDER BY data ASC";
+
+            $pesquisa = "%".$pesquisa."%";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->bindValue(1, $pesquisa);
@@ -98,6 +131,7 @@ class DBcontrole {
             $stmt->execute();
 
         }elseif(!$pesquisa and $data_inicio and $data_fim){
+            echo "Não Sim Sim ok, funciona filtro de data";
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
@@ -108,7 +142,9 @@ class DBcontrole {
             $stmt->bindValue(2, $data_inicio);
             $stmt->bindValue(3, $data_fim);
             $stmt->execute();
+        
         }
+
 
 
         if($stmt->rowCount() > 0){

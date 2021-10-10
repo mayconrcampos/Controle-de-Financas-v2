@@ -99,7 +99,7 @@ include_once("../Model/Controle.php");
                   <input type="date" class="form-control" name="data_fim" placeholder="Last name">
                 </div>
                 <div class="col-12">
-                  <input type="submit" class="form-control btn btn-primary mt-4" value="Pesquisar" placeholder="Last name">
+                  <input type="submit" class="form-control btn btn-primary mt-4" name="botao" value="Pesquisar" placeholder="Last name">
                 </div>
               </div>
             </form>
@@ -108,7 +108,7 @@ include_once("../Model/Controle.php");
 
 
 
-              <table class="table table table-responsive-lg table-hover bg-light border border-dark mt-3 ">
+              <table class="js-sort-table table table table-responsive-lg table-hover bg-light border border-dark mt-3 ">
                 <thead class="thead-dark">
                     <tr>
                       <th scope="col">Descrição</th>
@@ -123,7 +123,7 @@ include_once("../Model/Controle.php");
 
                 <!----- Aqui vai o laço foreach ------>
             <?php 
-                  if(!empty($_POST['descricao']) or !empty($_POST['data_ini']) and !empty($_POST['data_fim'])){
+                  if(!empty($_POST['botao'])){
                       $pesquisa = $_POST['descricao'];
                       $data_ini = $_POST['data_ini'];
                       $data_fim = $_POST['data_fim'];
