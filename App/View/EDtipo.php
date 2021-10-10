@@ -1,17 +1,12 @@
 <?php
 
-//session_start();
-
-
 use App\Model\DBcontrole;
 use App\Model\DBtipoGasto;
 use App\Model\DBusuario;
 use App\Model\TipoGasto;
 
-//include_once("../Model/DBcontrole.php");
 include_once("../Model/DBtipoGasto.php");
 include_once("../Model/DBusuario.php");
-//include_once("../Model/Controle.php");
 
 if(!empty($_GET['id'])){
     $id = $_GET['id'];

@@ -207,8 +207,8 @@ include_once("./App/Model/Controle.php");
         <h1>Movimentação Financeira</h1>
 
 
-        <div class="tableLista">
-              <table class="js-sort-table table table-md table-responsive-md table-hover border border-dark">
+        <div class="tableLista w-100">
+              <table class="js-sort-table table-md table-responsive-lg table-hover border border-dark bg-light w-100">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Descrição</th>
@@ -315,8 +315,8 @@ include_once("./App/Model/Controle.php");
         <h1>Lista de Categorias</h1>
 
 
-        <div class="tableLista">
-              <table class="js-sort-table table table table-responsive-md table-hover border border-dark">
+        <div class="tableLista w-100">
+              <table class="js-sort-table table-md table table-responsive-lg table-hover border border-dark w-100">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Tipo</th>
