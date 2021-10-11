@@ -167,6 +167,15 @@ include_once("../Model/Controle.php");
   <!------------- Limite do conteúdo ------------------>    
   </div>
 
+  <?php 
+    $somames = new \App\Model\DBcontrole();
+    foreach($somames->selectSomaMes("2021") as $soma){
+      echo "somames: ".$soma['total']."   Mes : ".$soma['mes']." Tipo".$soma['tipo']."<br>";
+    }
+
+    
+  ?>
+
 </div>
 
                 

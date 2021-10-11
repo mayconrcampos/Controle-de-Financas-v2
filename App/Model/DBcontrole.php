@@ -63,6 +63,25 @@ class DBcontrole {
     }
 
 
+    // Select na soma do total por mês
+    public function selectSomaMes($ano){
+
+        $query = "SELECT EXTRACT(month from data) AS mes, SUM(valor) as total, tipo FROM controle WHERE EXTRACT(year from data)=? GROUP BY mes, tipo ORDER BY mes";
+        
+        $stmt = \App\Model\Conexao::getConn()->prepare($query);
+        $stmt->bindValue(1, $ano);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $resultado;
+        }else{
+            return [];
+        }
+    }
+
+
     // select Relatorios
 
     public function selectRelatorios($pesquisa = null, $data_inicio = null, $data_fim = null, $userId=null){
