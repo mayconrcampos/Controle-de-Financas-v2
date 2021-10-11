@@ -108,7 +108,7 @@ include_once("../Model/Controle.php");
 
 
 
-              <table class="js-sort-table table table table-responsive-lg table-hover bg-light border border-dark mt-3 ">
+              <table class="js-sort-table table table-sm table-responsive-lg table-hover bg-light border border-dark mt-3 ">
                 <thead class="thead-dark">
                     <tr>
                       <th scope="col">Descrição</th>

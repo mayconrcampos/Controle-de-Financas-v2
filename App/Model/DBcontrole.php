@@ -62,6 +62,7 @@ class DBcontrole {
         }
     }
 
+
     // select Relatorios
 
     public function selectRelatorios($pesquisa = null, $data_inicio = null, $data_fim = null, $userId=null){
