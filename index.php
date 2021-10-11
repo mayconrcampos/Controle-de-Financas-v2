@@ -11,6 +11,9 @@ include_once("./App/Model/DBcontrole.php");
 include_once("./App/Model/DBtipoGasto.php");
 include_once("./App/Model/DBusuario.php");
 include_once("./App/Model/Controle.php");
+include_once("./App/Controller/Funcoes.php");
+
+
 
 ?>
 
@@ -204,7 +207,9 @@ include_once("./App/Model/Controle.php");
     <!----------- Modal Table Lista Conta ---------------->
     <div id="ModlistaConta" class="ModlistaConta">
         <div onclick="fecharListaContas()" class="fecharListaContas">x</div>
-        <h1>Movimentação Financeira</h1>
+        <?php $mesCorrente = date("m"); $anoCorrente = date("Y"); ?>
+        <h2>Movimentação Financeira Mês de <?=  Funcoes::mesesDoAno($mesCorrente); ?> de <?= $anoCorrente ?></h2>
+        <small>Para ver movimentações de outros meses, vá em Relatórios.</small>
 
 
         <div class="tableLista w-100">

@@ -26,7 +26,7 @@ class DBcontrole {
         $stmt->execute();
     }
 
-    // select
+    // select DB Controle
 
     public function select($id = null){
         $data_fim = date("Y/m/d");
@@ -70,7 +70,7 @@ class DBcontrole {
         
 
         if(!$pesquisa and !$data_inicio and !$data_fim){
-            echo "Não Não Não ok e funcionando filtro das datas";
+            //echo "Não Não Não ok e funcionando filtro das datas";
             $data_fim = date("Y/m/d");
             $data_inicio = date("Y/m")."/01";
 
@@ -87,7 +87,7 @@ class DBcontrole {
         
 
         }elseif($pesquisa and !$data_inicio and !$data_fim){
-            echo "Sim Não Não ok, mas nao funciona filtro da data";
+            //echo "Sim Não Não ok, mas nao funciona filtro da data";
 
             $data_fim = date("Y/m/d");
             $data_inicio = date("Y/m")."/01";
@@ -115,7 +115,7 @@ class DBcontrole {
             $stmt->execute();
 
         }elseif($pesquisa and $data_inicio and $data_fim){
-            echo "Sim Sim Sim ok, mas não funciona filtro entre datas";
+            //echo "Sim Sim Sim ok, mas não funciona filtro entre datas";
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
             $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE (iduser=? AND descricao LIKE ? OR categoria LIKE ?) AND data BETWEEN ? AND ? ORDER BY data DESC";
@@ -131,7 +131,7 @@ class DBcontrole {
             $stmt->execute();
 
         }elseif(!$pesquisa and $data_inicio and $data_fim){
-            echo "Não Sim Sim ok, funciona filtro de data";
+            //echo "Não Sim Sim ok, funciona filtro de data";
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
