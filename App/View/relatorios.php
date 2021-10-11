@@ -133,11 +133,11 @@ include_once("../Model/Controle.php");
                       foreach($relatorios->selectRelatorios($pesquisa, $data_ini, $data_fim, "2") as $linha){  ?>
                           <tr>
                             <th scope="row"><?= $linha['descricao'] ?></th>
-                            <td><?= $linha['valor'] ?></td>
+                            <td><?= number_format($linha['valor'], 2, ",", ".") ?></td>
                             <td><?= $linha['data'] ?></td>
                             <td><?= $linha['categoria'] ?></td>
                             <td><?= $linha['comentario'] ?></td>
-                            <td><?= $linha['tipo'] ?></td>
+                            <td class="<?= ($linha['tipo'] == "1") ? "alert alert-success" : "alert alert-danger" ?>"><?= ($linha['tipo'] == "1") ? "Receita" : "Despesa" ?></td>
                           </tr>
 
                 <?php }  ?>

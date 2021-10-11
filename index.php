@@ -246,19 +246,20 @@ include_once("./App/Model/Controle.php");
 
           <?php   } 
                   $saldo = $receita - $despesa; ?>
-                </tbody>
-                <div class="sticky-bottom">
-                  <td>Receitas</td>
+                </tbody>    
+                <div class="table table-sm fixed-bottom">
+                  <td class="alert alert-success">Receitas</td>
                   <td>(R$) <?php echo number_format($receita, 2, ",", "."); ?>  </td>
-                  <td>Despesa</td>
+                  <td class="alert alert-danger">Despesa</td>
                   <td>(R$) <?php echo number_format($despesa, 2, ",", "."); ?>  </td>
-                  <td>Saldo</td>
+                  <td class="<?= ($saldo >= 0) ? "alert alert-success" : "alert alert-danger" ?>">Saldo</td>
                   <td>(R$) <?php echo number_format($saldo, 2, ",", "."); ?>    </td>
-                </div>
-               
+                </div>  
 
               </table>
+              
         </div>
+        
 
     </div>
 
