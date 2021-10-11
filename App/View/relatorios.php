@@ -128,9 +128,15 @@ include_once("../Model/Controle.php");
                       $data_ini = $_POST['data_ini'];
                       $data_fim = $_POST['data_fim'];
 
+                      $totalItens = 0;
+                      $valorTotal = 0;
+
                       $relatorios = new \App\Model\DBcontrole();
                   
                       foreach($relatorios->selectRelatorios($pesquisa, $data_ini, $data_fim, "2") as $linha){  ?>
+                          <?php $valorTotal += $linha['valor']; ?>
+                          <?php $totalItens++; ?>
+
                           <tr>
                             <th scope="row"><?= $linha['descricao'] ?></th>
                             <td><?= number_format($linha['valor'], 2, ",", ".") ?></td>
@@ -141,6 +147,13 @@ include_once("../Model/Controle.php");
                           </tr>
 
                 <?php }  ?>
+                <div class="table table-sm fixed-bottom">
+                  <td class="alert alert-success">Valor Total</td>
+                  <td>(R$) <?= number_format($valorTotal, 2, ",", "."); ?>  </td>
+                  <td class="alert alert-success">Total Itens</td>
+                  <td>(UNI) <?php echo $totalItens ?>  </td>
+                
+                </div>  
             <?php }  ?>
 
                 <!------- Aqui termina o laço foreach --------->
