@@ -146,7 +146,10 @@ include_once("./App/Controller/Funcoes.php");
                         <input type="date" aria-label="First name" class="form-control form-control-lg" name="data">
                     </div><br>
 
-                    <div class="input-group mb-4">
+
+                    
+
+                    <div class="input-group mb-2">
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01" name="categoria">Categoria</label>
                         </div>
@@ -182,6 +185,13 @@ include_once("./App/Controller/Funcoes.php");
 
                     </div>
 
+                    <small class="">Faltou alguma categoria na lista?</small>
+
+                    <div class="alert alert-primary text-center">
+                        <a class="nav-link text-dark text-center" href="#" onclick="addCategoria()">Adicione uma Categoria</a>
+                    </div>
+                    
+
                     <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Comentários</span>
@@ -207,7 +217,7 @@ include_once("./App/Controller/Funcoes.php");
         <div onclick="fecharListaContas()" class="fecharListaContas">x</div>
         <?php $mesCorrente = date("m"); $anoCorrente = date("Y"); ?>
         <h2>Movimentação Financeira Mês de <?=  Funcoes::mesesDoAno($mesCorrente); ?> de <?= $anoCorrente ?></h2>
-        <small>Para ver movimentações de outros meses, vá em Relatórios.</small>
+        <small>Para visualizar movimentações de outros meses, vá em <a href="./App/View/relatorios.php"> Relatórios.</a></small>
 
 
         <div class="tableLista w-100">
@@ -277,6 +287,7 @@ include_once("./App/Controller/Funcoes.php");
             
               <form class="m-3" action="./App/Controller/ADDcategoria.php" method="POST">
                 <div class="form-check form-check-inline">
+                
                   <fieldset>
 
                     <div class="d-inline alert alert-primary rounded" role="alert">
@@ -288,6 +299,8 @@ include_once("./App/Controller/Funcoes.php");
                       <input type="radio" name="tipo" id="filtro" value="0" class="form-check-input" >
                       <label for="despesas" class="form-check-label">Despesa</label>
                     </div>
+
+                    
 
                     <div class="input-group mt-4">
                         <div class="input-group-prepend">
