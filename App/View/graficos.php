@@ -87,7 +87,7 @@ include_once("../Controller/Funcoes.php");
 
 <!------------- Limite do conteúdo ------------------>    
             <fieldset>
-                 <img src="../Controller/getGraph.php" alt="Balanços dos gastos mensais" title="Balanço dos gastos mensais" />
+                 <img src="../Controller/getGraph.php"  class="img-fluid" alt="Responsive image" title="Balanço dos gastos mensais" />
             </fieldset>  
         
     </div>

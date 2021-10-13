@@ -20,11 +20,16 @@ $data = array();
 
              $somames = new \App\Model\DBcontrole();
              $anoAtual = date("Y");
-             foreach($somames->selectSomaMes($anoAtual) as $soma){
-               $data[] = array(Funcoes::mesesDoAno($soma['mes']), $soma['total']) ;
-             }
+            foreach($somames->selectSomaMes($anoAtual) as $soma){
+                if($soma['tipo'] == '1'){
+                    $data[] = array(Funcoes::mesesDoAno($soma['mes'])." - Receitas", $soma['total']);
+                }else{
+                    $data[] = array(Funcoes::mesesDoAno($soma['mes'])." - Despesas", $soma['total']);
+                }
+                
+            }
 # Cria um novo objeto do tipo PHPlot com 500px de largura x 350px de altura                 
-$plot = new PHPlot(950 , 350);     
+$plot = new PHPlot(1300 , 350);     
   
 // Organiza Gráfico -----------------------------
 $plot->SetTitle('Balanços de gastos e receitas mensais');
