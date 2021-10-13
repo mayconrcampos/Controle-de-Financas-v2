@@ -28,8 +28,11 @@ $data = array();
                 }
                 
             }
+
 # Cria um novo objeto do tipo PHPlot com 500px de largura x 350px de altura                 
-$plot = new PHPlot(1750 , 550);     
+$plot = new PHPlot(1750 , 550);    
+
+
   
 // Organiza Gráfico -----------------------------
 $plot->SetTitle('Balanços de gastos e receitas mensais');

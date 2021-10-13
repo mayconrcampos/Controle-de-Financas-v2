@@ -86,7 +86,7 @@ include_once("../Controller/Funcoes.php");
         <h1>Gráficos de Balanços mensais com relação a entradas e saídas</h1>
 
 <!------------- Limite do conteúdo ------------------>    
-            <fieldset>
+            <fieldset class="border rounded">
                  <img src="../Controller/getGraph.php"  class="img-fluid" alt="Responsive image" title="Balanço dos gastos mensais" />
             </fieldset>  
         
