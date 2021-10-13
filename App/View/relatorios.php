@@ -11,6 +11,7 @@ include_once("../Model/DBcontrole.php");
 include_once("../Model/DBtipoGasto.php");
 include_once("../Model/DBusuario.php");
 include_once("../Model/Controle.php");
+include_once("../Controller/Funcoes.php");
 
 ?>
 
@@ -58,8 +59,11 @@ include_once("../Model/Controle.php");
 <div class="d-flex">
         <nav id= "sidebar1" class="sidebar d-inline-flex">
             <ul class="list-unstyled m-3">
-            <li class="nav-item">
+                <li class="nav-item">
                 <a class="nav-link text-dark" href="../../index.php"><i class='bx bx-money'></i> Menu Principal</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" href="./graficos.php"><i class='bx bxs-report'></i> Gráficos</a>
                 </li>
             </ul>
         </nav>
@@ -163,18 +167,11 @@ include_once("../Model/Controle.php");
         </div>
     </div>
 
-
   <!------------- Limite do conteúdo ------------------>    
+            
   </div>
 
-  <?php 
-    $somames = new \App\Model\DBcontrole();
-    foreach($somames->selectSomaMes("2021") as $soma){
-      echo "somames: ".$soma['total']."   Mes : ".$soma['mes']." Tipo".$soma['tipo']."<br>";
-    }
-
-    
-  ?>
+  
 
 </div>
 

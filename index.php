@@ -13,8 +13,6 @@ include_once("./App/Model/DBusuario.php");
 include_once("./App/Model/Controle.php");
 include_once("./App/Controller/Funcoes.php");
 
-
-
 ?>
 
 <!DOCTYPE html>
