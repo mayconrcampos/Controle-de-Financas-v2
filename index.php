@@ -333,7 +333,7 @@ include_once("./App/Controller/Funcoes.php");
 
 
         <div class="tableLista w-100">
-              <table class="js-sort-table table-md table table-responsive-lg table-hover border border-dark w-100">
+              <table class="js-sort-table table-sm table-responsive-lg table-hover border border-dark w-100">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Tipo</th>

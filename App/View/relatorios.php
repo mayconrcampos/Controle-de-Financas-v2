@@ -112,7 +112,7 @@ include_once("../Controller/Funcoes.php");
 
 
 
-              <table class="js-sort-table table table-sm table-responsive-lg table-hover bg-light border border-dark mt-3 ">
+              <table class="js-sort-table table table-sm table-responsive-lg table-hover bg-light border border-dark mt-3 w-100">
                 <thead class="thead-dark">
                     <tr>
                       <th scope="col">Descrição</th>
