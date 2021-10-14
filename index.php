@@ -257,7 +257,7 @@ include_once("./App/Controller/Funcoes.php");
                     <td><a href="./App/Controller/DELconta.php?id=<?= $linha['id'] ?>" onclick="return confirm('Deseja realmente excluir este registro?')"><i class='bx bx-trash'></i></a></td>
                   </tr>
 
-          <?php   } 
+          <?php   }
                   $saldo = $receita - $despesa; ?>
                 </tbody>    
                 <div class="table table-sm fixed-bottom">
