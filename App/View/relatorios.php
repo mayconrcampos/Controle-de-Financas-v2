@@ -91,7 +91,7 @@ include_once("../Controller/Funcoes.php");
 
         <div class="tableLista">
             <form method="POST" action="">
-              <div class="form-row">
+              <div class="form-row w-50 m-auto">
                 <div class="col-12 mb-3 text-left">
                   <input type="text" class="form-control" name='descricao' placeholder="Filtrar">
                   <small class="ml-3">Filtrar por: Descrição / Categoria</small>
