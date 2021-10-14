@@ -361,69 +361,7 @@ include_once("./App/Controller/Funcoes.php");
         </div>
     </div>
 
-
-    <!----------- Modal Relatórios ---------------->
-  <div id="modRelatorios" class="modRelatorios">
-        <div onclick="fechaRelatorios()" class="fechaRelatorios">x</div>
-        <h1>Relatórios</h1>
-
-
-        <div class="tableLista">
-          <div class="row text-left">
-          <div class="form-group col-6">
-                              
-                              <label>Filtrar por</label>
-                              <input type="text" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
-                              <small id="" class="form-text text-muted">Filtrar por Descrição, Categoria, Comentário ou Intervalo.</small>
-              </div>
-              <div class="form-group col-3">
-                             
-                              <label>Data Inicio</label>
-                              <input type="date" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
-              </div>
-              <div class="form-group col-3">
-                             
-                              <label>Data Fim</label>
-                              <input type="date" aria-label="First name" id="descricao" class="form-control form-control-lg" name="descricao" autofocus>
-              </div>
-          </div>
-              
-
-              <table class="table table-lg table-responsive-xl table-hover border border-dark mt-3 ">
-                <thead>
-                    <tr>
-                      <th scope="col">Descrição</th>
-                      <th scope="col">Valor (R$)</th>
-                      <th scope="col">Data</th>
-                      <th scope="col">Categoria</th>
-                      <th scope="col">Comentário</th>
-                      <th scope="col">Tipo</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                <!----- Aqui vai o laço foreach ------>
-                  <tr>
-                    <th scope="row">Super Santos</th>
-                    <td>50,00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-
-                <!------- Aqui termina o laço foreach --------->
-                  
-                </tbody>
-              </table>
-        </div>
-    </div>
-
-
-  <!------------- Limite do conteúdo ------------------>    
-  </div>
+    <!--------------- Limite do conteúdo ------------------>
 
 </div>
 
