@@ -108,9 +108,9 @@ include_once("./App/Controller/Funcoes.php");
     <div id="modaddConta" class="ModaddConta">
           <div onclick="fecharAddConta()" class="fecharAddConta">x</div>
           <h1>Adicionar Conta</h1>
-          <div class="formulario border border-dark rounded p-3 bg-light">
+          <div class="formulario border border-dark rounded p-2 bg-light">
             
-              <form class="m-2" action="./App/Controller/ADDconta.php" method="post">
+              <form class="m-1" action="./App/Controller/ADDconta.php" method="post">
                 <div class="form-check form-check-inline">
                   <fieldset>
 

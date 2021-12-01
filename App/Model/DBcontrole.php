@@ -1,5 +1,7 @@
 <?php
 namespace App\Model;
+// DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
+date_default_timezone_set('America/Sao_Paulo');
 
 use App\Model\Conexao;
 use App\Model\Controle;
@@ -44,13 +46,15 @@ class DBcontrole {
         }else{
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
-
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND data BETWEEN ? AND ? ORDER BY data DESC";
+            $mes_presente = date("m");
+            $ano_presente = date("Y");
+            
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND EXTRACT(month from data)=? AND EXTRACT(year from data)=? ORDER BY data DESC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->bindValue(1, $iduser);
-            $stmt->bindValue(2, $data_inicio);
-            $stmt->bindValue(3, $data_fim);
+            $stmt->bindValue(2, $mes_presente);
+            $stmt->bindValue(3, $ano_presente);
             $stmt->execute();
         }
 
