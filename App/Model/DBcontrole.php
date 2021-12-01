@@ -95,17 +95,22 @@ class DBcontrole {
 
         if(!$pesquisa and !$data_inicio and !$data_fim){
             //echo "Não Não Não ok e funcionando filtro das datas";
-            $data_fim = date("Y/m/d");
-            $data_inicio = date("Y/m")."/01";
+            //$data_fim = date("Y/m/d");
+            //$data_inicio = date("Y/m")."/01";
+
+            $mes_presente = date("m");
+            $ano_presente = date("Y");
+
+            echo $mes_presente."/".$ano_presente;
 
             // Lista todos as entradas e saídas ocorridas no mês presente, desde o dia 01 até o dia atual, que estiverem com iduser do usuário.
 
-            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND data BETWEEN ? AND ? ORDER BY data DESC";
+            $query = "SELECT id, descricao, valor, DATE_FORMAT(data, '%d/%m/%Y') as 'data', categoria, comentario, tipo, iduser FROM controle WHERE iduser=? AND EXTRACT(month from data)=? AND EXTRACT(year from data)=? ORDER BY data DESC";
 
             $stmt = \App\Model\Conexao::getConn()->prepare($query);
             $stmt->bindValue(1, $userId);
-            $stmt->bindValue(2, $data_inicio);
-            $stmt->bindValue(3, $data_fim);
+            $stmt->bindValue(2, $mes_presente);
+            $stmt->bindValue(3, $ano_presente);
 
             $stmt->execute();
         
