@@ -16,7 +16,7 @@ class Funcoes {
           }elseif(is_float($num)){    // Se for float puro, com ponto.
               $num = (double) $num;   // Transforma essa string em um double
               return $num;            // Retorna este double.
-          }else{                      // Se não for porra nenhuma, nem número é.
+          }else{                      // Se não for nada disso, nem número é.
               return false;           // Retorna false
           }
       }elseif($conta == 1){                       // Se tiver uma vírgula como separador.
